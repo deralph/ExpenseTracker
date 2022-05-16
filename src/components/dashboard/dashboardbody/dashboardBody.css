@@ -1,0 +1,59 @@
+.total-card{
+    padding: 25px;
+    border: 4px solid #9966ff;
+    border-radius: 5px;
+    width: 220px;
+    position: relative;
+}
+.dashboard-body{
+    padding: 30px;
+    font-family: sans-serif
+}
+.total-card span{
+    letter-spacing: 3px;
+    display: block;
+    font-size: 25px;
+    padding: 0 0 10px;
+    font-weight: 600;
+}
+.total-card p{
+    font-weight: 550;
+    font-size: 20px;
+
+}
+.total-card button{
+    border: 2px solid #9966ff;
+    font-size: 17px;
+    background: #fff;
+    padding: 5px ;
+    width: 100px;
+    border-radius: 20px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-weight: 550;
+}
+.line-color{
+    display: block;
+    width: 100%;
+}
+.line-box{
+    width: 15px;
+    height:15px;
+    /* background: blue; */
+}
+.dash{
+    display: flex;
+    padding: 5px;
+}
+.line-color p{
+    margin-left: 10px;
+    text-transform: capitalize;
+    font-weight: bold;
+}
+.line-chart{
+    height: 20px;
+    width: 300px;
+    /* background: blue; */
+    background: linear-gradient(90deg,red 40%,green 40% 60%,blue 60% 80%,yellow 80%  100%) ;
+}

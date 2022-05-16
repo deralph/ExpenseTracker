@@ -1,0 +1,41 @@
+.record{
+    min-height: 300px;
+    background: url(../../../Geulgram/20220501163611.jpg);
+    background-size: 100% 100%;
+    background-position: center;
+    margin: 100px 0 50px;
+    position: relative;
+    height: auto;
+}
+.record-cont{
+    max-width: 500px;
+    width: 100%;
+    margin-left: 50%;
+    font-family: serif;
+}
+.record p{
+    font-size: 60px;
+    color: #333;
+    width: 100%;
+    padding: 70px 30px 20px;
+    font-weight: 700;
+}
+.record .btn-cont{
+    display: flex;
+    justify-content: space-evenly;
+    padding-bottom: 30px;
+}
+.record .btn-cont button{
+    font-size: 18px;
+    border: none;
+    background: #9966ff;
+    color: #fff;
+    padding: 10px ;
+    width: 100px;
+    transition: 0.6s;
+    cursor: pointer;
+}
+.record .btn-cont button:hover{
+    background: #7733ff;
+    /* color: #444; */
+}

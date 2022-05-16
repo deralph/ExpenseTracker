@@ -1,0 +1,38 @@
+
+.consult{
+   background: url(../../Geulgram/20220501163507.jpg); 
+   background-size: 100% 100%;
+   display: flex;
+   justify-content: space-between;
+   padding: 5%;
+   object-fit: contain;
+   align-items: center;
+}
+.consult-text{
+    font-size: 30px;
+    font-weight: 550;
+    color: #444;
+}
+.form{
+    display: grid;
+    place-items: center;
+    height: 150px;
+    background: #eee;
+    padding: 30px;
+    width: 300px;
+}
+.form input{
+    height: 25px;
+    background: #ddd;
+    border: none;
+    outline: none;
+    width: 100%;
+    padding: 5px;
+}
+.form .btn{
+    padding: 10px 20px;
+    border: none;
+    background: #7733ff;
+    color: #fff;
+    text-transform: capitalize;
+}

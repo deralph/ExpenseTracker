@@ -1,0 +1,39 @@
+.about{
+    margin: 0 auto;
+    width: 90%;
+}
+.about-1{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.about-img{
+    flex-basis: 45%;
+    background: url(../../../Geulgram/20220501163514.jpg);
+    height: 400px;
+    background-size: 100% 100%;
+}
+.about-note{
+    flex: 50%;
+}
+.about h3{
+    margin: 50px auto;
+    text-align: center;
+    font-size: 3rem;
+    text-transform: capitalize;
+    font-family: sans-serif;
+    color: #7733ff;
+}
+.about-note{
+    flex-basis: 45%;
+}
+.about-note p{
+    font-size: 30px;
+    padding: 20px;
+}
+.about-note h4{
+    font-size: 30px;
+    font-family: sans-serif;
+    text-align: center;
+    color: #9966ff;
+}
