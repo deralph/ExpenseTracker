@@ -8,7 +8,7 @@ const Dashboard = () => {
   return (
     <section className="dashboard">
       <Navbar />
-      <article style={{ marginTop: "60px" }} className="dashboard">
+      <article className="dashboard">
         <Sidebar />
         <DashboardBody />
       </article>

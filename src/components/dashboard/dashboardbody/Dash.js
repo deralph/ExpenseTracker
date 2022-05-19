@@ -1,12 +1,12 @@
 import React from "react";
 import "./dashboardBody.css";
 
-const Dash = ({ color, meet }) => {
-  //   console.log(meet);
+const Dash = ({ color, name, percentage }) => {
   return (
     <div className="dash">
-      <div className="line-box" style={{ background: color[meet] }} />
-      <p>{meet}</p>
+      <div className="line-box" style={{ background: color[name] }} />
+      <p>{name}</p>
+      <p className="percent">{`${percentage}%`}</p>
     </div>
   );
 };

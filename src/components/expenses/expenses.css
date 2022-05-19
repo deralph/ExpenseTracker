@@ -1,0 +1,73 @@
+.exp{
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    flex-direction: column;
+    width: 120px;
+}
+.expense{
+    border: 1px solid #ddd;
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 8px  10px rgba(0, 0, 0, 0.1);
+    flex-basis: 40%;
+    margin-top: 30px;
+}
+.expenses div{
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-evenly;
+}
+.expense-box{
+    margin-bottom: 30px;
+}
+.exp-icon{
+    font-size: 30px;
+    padding: 5px;
+    border-radius: 50%;
+}
+.exp-name{
+    font-size: 17px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+.exp-price{
+    color: #0033ff;
+    font-weight: 600;
+}
+.exp-date{
+    color: #888;
+}
+.btns{
+    padding: 10px 40px;
+    font-size: 16px;
+    background: #9933ff;
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    border-radius: 20px;
+    transition: all 0.7s;
+    
+}
+.btns:hover{
+    color: #555;
+    border: 2px solid #9933ff;
+    background: #fff;
+}
+.expense-btn{
+    display: flex;
+    justify-content: center;
+
+}
+.expenses{
+    position: relative;
+    margin: 30px 0;
+}
+.expenses h3{
+    text-align: center; 
+    font-size: 30px;
+}

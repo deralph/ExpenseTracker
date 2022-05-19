@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useCallback } from "react";
-// import { controlSubmit } from "../Sign in/Register";
 import { useGlobal } from "../context/Context";
 const CategoriesForm = () => {
   const timing = new Date().toLocaleDateString("en-us", {
@@ -8,7 +7,7 @@ const CategoriesForm = () => {
     day: "numeric",
     month: "short",
   });
-  const [state, dispatch] = useGlobal();
+  const [{}, dispatch] = useGlobal();
   const getLocaiStorage = useCallback(() => {
     let _expenses = localStorage.getItem("results");
     if (_expenses) {
@@ -40,19 +39,21 @@ const CategoriesForm = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (
+    if (isNaN(form.price)) {
+      setAlert(true);
+      setMsg("Enter correct inputs");
+      setShowAlert(true);
+    } else if (
       form.category.trim() === "" ||
       form.date.trim() === "" ||
       form.price.trim() === "" ||
       form.productName.trim() === "" ||
       form.productNo.trim() === ""
     ) {
-      dispatch({ type: "CHECK_OK", payload: false });
       setShowAlert(true);
       setAlert(true);
       setMsg("please enter all input");
-    }
-    if (
+    } else if (
       form.category &&
       form.date &&
       form.price &&
@@ -65,12 +66,10 @@ const CategoriesForm = () => {
       const result = { id: new Date().getTime().toString(), ...form };
       setResults([...results, result]);
       console.log(results);
-      // console.log(resulter);
-      console.log(result);
       setForm({
         productName: "",
         price: "",
-        date: timing,
+        date: "",
         productNo: "",
         category: "",
       });
@@ -81,32 +80,17 @@ const CategoriesForm = () => {
   };
   useEffect(() => {
     getLocaiStorage();
-    console.log(results);
-    console.log(getLocaiStorage());
-    console.log(state);
     dispatch({ type: "SET_EXPENSES", payload: results });
-  }, [results, getLocaiStorage]);
+  }, [results, getLocaiStorage, dispatch]);
 
   useEffect(() => {
     localStorage.setItem("results", JSON.stringify(results));
-    // console.log(form.date);
   }, [form, results]);
-  useEffect(() => {
-    const meet = new Date().toLocaleDateString("en-us", { month: "short" });
-    const meet1 = new Date().toLocaleDateString("en-us", { day: "numeric" });
-    const meet2 = new Date().toLocaleDateString("en-us", { weekday: "long" });
-    const meet3 = new Date().toLocaleDateString("en-us", { year: "numeric" });
-    const meets = [meet, meet1, meet2];
-    const meeter = meets.join(" ");
-    console.log(meet, meet1, meet2, meet3, meets, meeter);
-    console.log(timing);
-    // console.log(results);
-  }, [timing]);
+
   return (
     <section className="categoryForm">
       <div className="semi-bg" />
       <form action="" className="sign">
-        {/* <h3>register</h3> */}
         <h3>Enter product details</h3>
         {showAlert && (
           <p className={`alert ${alert ? "fail" : "sucess"}`}>{msg}</p>
@@ -167,7 +151,6 @@ const CategoriesForm = () => {
           <option value="others">Others</option>
         </select>
         <button onClick={handleSubmit}>Submit</button>
-        <p>{form.date}</p>
       </form>
     </section>
   );

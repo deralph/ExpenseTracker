@@ -2,6 +2,7 @@ import Categories from "./components/categories/Categories";
 import CategoriesForm from "./components/categories/CategoriesForm";
 import Context from "./components/context/Context";
 import Dashboard from "./components/dashboard/Dashboard";
+import Expenses from "./components/expenses/Expenses";
 import Home from "./components/home/Home";
 import Navbar from "./components/home/navbar/Navbar";
 import Welcome from "./components/logged/welcome/Welcome";
@@ -14,12 +15,13 @@ function App() {
       {/* <Home /> */}
       {/* <Navbar /> */}
       {/* <SignIn /> */}
-      {/* </Context> */}
+      {/* <Context/> */}
       {/* <Dashboard /> */}
       {/* <Welcome /> */}
-      {/* <Categories /> */}
+      <Categories />
       <CategoriesForm />
       <Dashboard />
+      {/* <Expenses /> */}
     </div>
   );
 }

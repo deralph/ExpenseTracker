@@ -1,5 +1,4 @@
 import React from "react";
-import Incategories from "./Incategories";
 import { GiMoneyStack, GiClothes } from "react-icons/gi";
 import { FaHome } from "react-icons/fa";
 import {
@@ -11,7 +10,7 @@ import {
 } from "react-icons/md";
 import { BiDrink } from "react-icons/bi";
 
-const Categories = () => {
+const expense = ({ productName, price, category, productNo, date }) => {
   const set_of_info = [
     {
       title: "cloth",
@@ -54,7 +53,7 @@ const Categories = () => {
       color: "rgb(255, 0, 157)",
     },
     {
-      title: "miscellenous",
+      title: "micellenous",
       Icon: MdToys,
       color: "yellow",
     },
@@ -65,45 +64,32 @@ const Categories = () => {
     },
   ];
   return (
-    <section className="category">
-      {set_of_info.map((category) => {
-        return <Incategories {...category} key={category.title} />;
-      })}
-      {/* <Incategories
-        title="grocery"
-        Icon={MdLocalGroceryStore}
-        color="skyblue"
-      />
-      <Incategories
-        title="drinks"
-        Icon={BiDrink}
-        color="rgba(165, 42, 42, 0.514)"
-      />
-      <Incategories title="foods" Icon={MdOutlineFoodBank} color="peachpuff" />
-      <Incategories
-        title="electric"
-        Icon={MdElectricalServices}
-        color="blueviolet"
-      />
-      <Incategories title="home expenses" Icon={FaHome} color="yellowgreen" />
-      <Incategories
-        title="transport"
-        Icon={MdOutlineEmojiTransportation}
-        color="grey"
-      />
-      <Incategories
-        title="accesories"
-        Icon={GiClothes}
-        color="rgb(255, 0, 157)"
-      />
-      <Incategories title="miscellenous" Icon={MdToys} color="yellow" />
-      <Incategories
-        title="others"
-        Icon={GiMoneyStack}
-        color="rgb(255, 0, 157)"
-      /> */}
-    </section>
+    <div className="expense">
+      <div>
+        {set_of_info.map((icon) => {
+          const Red = icon.Icon;
+          if (icon.title === category) {
+            return (
+              <Red
+                style={{ background: `${icon.color}` }}
+                className="exp-icon"
+              />
+            );
+          } else {
+            return null;
+          }
+        })}
+      </div>
+      <div className="exp">
+        <p className="exp-name">{productName}</p>
+        <p className="exp-date">{date}</p>
+      </div>
+      <div className="exp">
+        <p className="exp-price">{price * productNo}</p>
+        <p className="exp-date">{category}</p>
+      </div>
+    </div>
   );
 };
 
-export default Categories;
+export default expense;

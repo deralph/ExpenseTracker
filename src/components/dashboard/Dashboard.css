@@ -1,4 +1,6 @@
 .dashboard{
     display: flex;
     flex-direction: row;
+    margin-top: 60px;
+    width: 100%;
 }

@@ -6,7 +6,7 @@ import "./Features.css";
 const Features = () => {
   return (
     <section className="features">
-      <GiMoneyStack className="iconz" />
+      <GiMoneyStack className="feat-icon" />
       {/* <Feature icon={} title='' note=''/>
       <Feature icon={} title='' note=''/>
       <Feature icon={} title='' note=''/> */}

@@ -1,122 +1,135 @@
-import React from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useGlobal } from "../../context/Context";
+import Expenses from "../../expenses/Expenses";
 import Dash from "./Dash";
 import "./dashboardBody.css";
-const DashboardBody = () => {
-  const [{ expenses }, dispatch] = useGlobal();
-  console.log(expenses);
-  const total = expenses.reduce((exp, expense) => {
-    const { productNo, price } = expense;
-    const proNo = parseInt(productNo);
-    const proPrice = parseInt(price);
-    const expenseTotal = proNo * proPrice;
+import quotes, { Category_colors } from "../../../quotesDB";
+import Quote from "./Quote";
 
-    // exp.total += expenseTotal;
+const DashboardBody = () => {
+  const [{ expenses }] = useGlobal();
+  const [presentQuote, setPresentQuote] = useState(0);
+
+  const randomNum = useCallback(() => {
+    const random = Math.floor(Math.random() * (quotes.length - 1));
+    console.log(random);
+    setPresentQuote(random);
+  }, []);
+
+  useEffect(() => {
+    const change = setInterval(() => {
+      randomNum();
+    }, 8000);
+    return () => clearInterval(change);
+  }, [randomNum]);
+
+  const total_Expense = expenses.reduce((exp, expense) => {
+    const { productNo, price } = expense;
+    const productNum = parseInt(productNo);
+    const productPrice = parseInt(price);
+    const expenseTotal = productNum * productPrice;
+
     return exp + expenseTotal;
   }, 0);
-  const met1 = expenses.map((expense) => expense.category);
-  const met = [...new Set(met1)];
-  const colors = {
-    cloth: "#993377",
-    grocery: "skyblue",
-    drinks: "rgba(165, 42, 42, 0.514)",
-    electric: "blueviolet",
-    home: "yellowgreen",
-    transport: "grey",
-    micellenous: "yellow",
-    foods: "peachpuff",
-    others: "rgb(255, 0, 157)",
-    accesories: "burlywood",
-  };
-  const percentage = met.map((man) => {
-    const percent = expenses.filter((expense) => expense.category === man);
-    console.log(percent);
-    const per = percent.reduce((_per, pre) => {
-      const { productNo, price } = pre;
-      const proNo = parseInt(productNo);
-      const proPrice = parseInt(price);
-      const preTotal = proNo * proPrice;
-      return _per + preTotal;
+
+  const Expenses_Category = expenses.map((expense) => expense.category);
+  const Unique_expense_Category = [...new Set(Expenses_Category)];
+
+  const percentage = Unique_expense_Category.map((uniqueCategory) => {
+    const filter_Category = expenses.filter(
+      (expense) => expense.category === uniqueCategory
+    );
+
+    const percent = filter_Category.reduce((acc, real) => {
+      const { productNo, price } = real;
+      const productNum = parseInt(productNo);
+      const productPrice = parseInt(price);
+      const realTotal = productNum * productPrice;
+      return acc + realTotal;
     }, 0);
-    console.log(per);
-    const realPercent = ((per / total) * 100).toFixed(2);
-    console.log(realPercent);
-    return { type: man, percenta: realPercent };
+
+    const realPercent = ((percent / total_Expense) * 100).toFixed(2);
+    return { type: uniqueCategory, percenta: realPercent, percent };
+  });
+
+  const sorted_percent = percentage.sort((a, b) => {
+    return b.percenta - a.percenta;
   });
 
   const sum = (arr, n) => {
-    const filtered = arr.slice(0, n + 1);
-    // console.log(filtered);
-    const filterer = filtered.reduce((acc, real) => {
-      const { percenta, type } = real;
+    const joined_Array = arr.slice(0, n + 1);
+    const cummulative = joined_Array.reduce((acc, real) => {
+      const { percenta } = real;
       const may = Number(percenta);
       return acc + may;
     }, 0);
-    // console.log(filterer);
-    return filterer;
+    return cummulative;
   };
-  console.log(sum(percentage, 4));
-  const newArr = [];
-  const gradient = () => {
-    for (let i = 0; i < percentage.length; i++) {
-      console.log(i);
-      console.log(percentage[i].type);
-      const felt = { tohundred: sum(percentage, i), type: percentage[i].type };
-      newArr.push(felt);
-      // const done =
-      // const filtered = ok.slice(0, i + 1);
-      // console.log(filtered);
-      // const filterer = filtered.reduce((acc, real) => {
-      //   return acc + real.percenta;
-      // }, 0);
-      // if (i > 1) {
-      //   return {
-      //     type: ok[i].type,
-      // start: 0,
-      //     end: ok[i].percentage,
-      //   };
-      // } else {
-      //   return {
-      //     type: ok[i].type,
-      //     start: filterer,
-      //     end: filterer + ok[i].percenta,
-      //   };
-      // }
+
+  const Cummulative_percent_Array = [];
+  const Cummulative_percent = () => {
+    for (let i = 0; i < sorted_percent.length; i++) {
+      const returned_cummulative_array = {
+        tohundred: sum(sorted_percent, i),
+        type: percentage[i].type,
+      };
+      Cummulative_percent_Array.push(returned_cummulative_array);
     }
   };
-  gradient();
-  console.log(newArr);
-  // console.log(newArr[0].tohundred);
-  const coloring = [`${colors[newArr[0]]} 0% `];
-  const coloured = () => {
-    for (let i = 0; i < newArr.length; i++) {}
-  };
-  // console.log(gradient());
-  console.log(percentage);
-  console.log(coloring);
 
-  console.log(colors);
-  console.log(met1);
-  console.log(met);
-  console.log(total);
+  Cummulative_percent();
+  const Real_Gradient_color = [];
+  const Gradient_color = () => {
+    for (let i = 0; i < Cummulative_percent_Array.length; i++) {
+      let j, f;
+      i === 0 ? (j = 0) : (j = Cummulative_percent_Array[i - 1].tohundred);
+      i === Cummulative_percent_Array.length - 1
+        ? (f = `${Cummulative_percent_Array[i].tohundred}%`)
+        : (f = `${Cummulative_percent_Array[i].tohundred}%,`);
+      const returned_Gradient_color = `${
+        Category_colors[Cummulative_percent_Array[i].type]
+      } ${j}% ${f}`;
+      Real_Gradient_color.push(returned_Gradient_color);
+    }
+  };
+  Gradient_color();
+  const joined_Real_Gradient_color = `${Real_Gradient_color.join(" ")}`;
+  const Original_Gradient_color = `linear-gradient(90deg,${joined_Real_Gradient_color})`;
   return (
     <section className="dashboard-body">
-      <div className="total-card">
-        <p>
-          <span>{total}</span>
-          spent
-        </p>
-        <button>See List</button>
-      </div>
-      <div className="line-chart" />
-      <div className="line-color">
-        {met.map((meet, index) => {
-          const back = colors[meet];
-          console.log(back);
-          console.log(meet);
-          return <Dash meet={meet} key={index} color={colors} />;
-        })}
-      </div>
+      <Quote
+        quote={quotes[presentQuote].quote}
+        author={quotes[presentQuote].author}
+      />
+      <article className="total-category">
+        <div className="total-card">
+          <p>
+            <span>{total_Expense}</span> <br />
+            spent
+          </p>
+          <button>See List</button>
+        </div>
+        <div className="line-place">
+          <div
+            className="line-chart"
+            style={{ background: Original_Gradient_color }}
+          />
+          <div className="line-color">
+            {percentage.map((category) => {
+              return (
+                <Dash
+                  name={category.type}
+                  key={category.type}
+                  color={Category_colors}
+                  percentage={category.percenta}
+                />
+              );
+            })}
+          </div>
+        </div>
+      </article>
+      <Expenses />
+      <div className="">top Categories</div>
     </section>
   );
 };

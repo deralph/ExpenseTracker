@@ -1,5 +1,4 @@
 .Body div{
-    /* font-size: 30px; */
     padding: 20vh 0 50px 100px;
     max-width: 700px;
     width: 90%;
@@ -10,8 +9,6 @@
     width: 100vw;
     background: url(../../../Geulgram/20220501164241.jpg);
     background-position: center ;
-    /* background-size: 100% 100%; */
-    /* background-repeat: no-repeat; */
     background-position: center;
     background-size: cover;
     height: auto;
@@ -49,7 +46,6 @@
     
     .Body div{
         padding: 150px 0 50px 100px;
-        /* margin: 0; */
         width: 500px;
         min-width: 300px;
         font-family: sans-serif;
@@ -62,16 +58,12 @@
 @media (max-width:450px){
     
     .Body div{
-        /* margin: 0 !important; */
-        /* width: 500px; */
-        /* font-size: 30px; */
         width: 250px !important;
         font-family: sans-serif;
         padding: 150px 0 50px 20px;
     }
     .Body div h2{
         font-size: 40px;
-        /* line-height: 2.5rem; */
     }
     .Body div p{
         font-size: 17px;
