@@ -1,7 +1,6 @@
 export const initialState = {
   expenses: [],
 };
-
 const Reducer = (state, action) => {
   console.log(action);
   if (action.type === "SET_EXPENSES") {

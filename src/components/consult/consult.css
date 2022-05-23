@@ -1,17 +1,35 @@
 
-.consult{
-   background: url(../../Geulgram/20220501163507.jpg); 
-   background-size: 100% 100%;
+.consult-1{
    display: flex;
-   justify-content: space-between;
-   padding: 5%;
+   justify-content: space-evenly;
+   padding: 1% 5%;
    object-fit: contain;
    align-items: center;
 }
-.consult-text{
+.consult h3{
+    text-align: center;
     font-size: 30px;
+    font-family: sans-serif;
+    position: relative;
+    padding-bottom: 5px;
+}
+.consult h3::after, .testi h3::after ,.about h3::after,.features h3::after{
+    content: '';
+    position: absolute;
+    width: 10%;
+    height: 5px;
+    background: #7733ff;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 5px;
+
+}
+.consult-text{
+    font-size: 40px;
     font-weight: 550;
-    color: #444;
+    color: #333;
+    font-family: sans-serif;
 }
 .form{
     display: grid;
@@ -20,6 +38,7 @@
     background: #eee;
     padding: 30px;
     width: 300px;
+    position: relative;
 }
 .form input{
     height: 25px;
@@ -35,4 +54,13 @@
     background: #7733ff;
     color: #fff;
     text-transform: capitalize;
+}
+.form-1{
+    background: #96f;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    display: grid;
+    place-content: center;
+    padding: 20px;
 }

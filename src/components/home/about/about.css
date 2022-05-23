@@ -6,23 +6,37 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
 }
 .about-img{
     flex-basis: 45%;
-    background: url(../../../Geulgram/20220501163514.jpg);
+    background: url(../../../Geulgram/journalpics.jpg)!important;
     height: 400px;
     background-size: 100% 100%;
+    position: absolute;
+    width: 400px;
+    right: 10%;
+    border-radius: 50%;
+}
+.about-img-2{
+    height: 100%;
+        border-radius: 50%;
+        background: #9966ff;
+        opacity: 0.5;
+        width: 100%;
 }
 .about-note{
-    flex: 50%;
+    position: relative;
+    width: 50vw;
 }
-.about h3{
+.about h3, .features h3{
     margin: 50px auto;
     text-align: center;
-    font-size: 3rem;
+    font-size: 30px;
     text-transform: capitalize;
     font-family: sans-serif;
-    color: #7733ff;
+    position: relative;
+    padding-bottom: 5px;
 }
 .about-note{
     flex-basis: 45%;
@@ -36,4 +50,5 @@
     font-family: sans-serif;
     text-align: center;
     color: #9966ff;
+    position: relative;
 }

@@ -1,4 +1,10 @@
-import React, { useContext, useReducer } from "react";
+import React, {
+  useContext,
+  useCallback,
+  useReducer,
+  useEffect,
+  useState,
+} from "react";
 import { GiMoneyStack, GiClothes } from "react-icons/gi";
 import { FaHome } from "react-icons/fa";
 import {
@@ -9,6 +15,7 @@ import {
   MdOutlineEmojiTransportation,
 } from "react-icons/md";
 import { BiDrink } from "react-icons/bi";
+import reducer, { initialState } from "./Reducer";
 
 const AppProvider = React.createContext();
 export const useIcons = () => {
@@ -67,9 +74,37 @@ export const useIcons = () => {
   return allIcons;
 };
 
-const Context = ({ children, initialState, reducer }) => {
+const Context = ({ children }) => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const getLocalStorage = useCallback(() => {
+    let _expenses = localStorage.getItem("results");
+    if (_expenses) {
+      return (_expenses = JSON.parse(localStorage.getItem("results")));
+    } else {
+      return [];
+    }
+  }, []);
+  const [form, setForm] = useState({
+    id: new Date().getTime().toString(),
+    productName: "",
+    price: "",
+    date: "",
+    month: new Date().toLocaleDateString("en-us", { month: "long" }),
+    productNo: "",
+    category: "",
+    description: "",
+  });
+  const [results, setResults] = useState(getLocalStorage());
+  useEffect(() => {
+    getLocalStorage();
+    dispatch({ type: "SET_EXPENSES", payload: results });
+  }, [results, getLocalStorage, dispatch]);
+  useEffect(() => {
+    localStorage.setItem("results", JSON.stringify(results));
+  }, [form, results]);
+
   return (
-    <AppProvider.Provider value={useReducer(reducer, initialState)}>
+    <AppProvider.Provider value={{ form, setForm, results, setResults }}>
       {children}
     </AppProvider.Provider>
   );

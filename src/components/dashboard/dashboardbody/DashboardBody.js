@@ -11,12 +11,11 @@ import { useIcons } from "../../context/Context";
 import Incategories from "../../categories/Incategories";
 
 const DashboardBody = () => {
-  const [{ expenses }] = useGlobal();
+  const { results } = useGlobal();
   const [presentQuote, setPresentQuote] = useState(0);
 
   const randomNum = useCallback(() => {
     const random = Math.floor(Math.random() * (quotes.length - 1));
-    console.log(random);
     setPresentQuote(random);
   }, [setPresentQuote]);
 
@@ -27,12 +26,12 @@ const DashboardBody = () => {
     return () => clearInterval(change);
   }, [randomNum]);
 
-  const total_Expense = reduceFunction(expenses);
+  const total_Expense = reduceFunction(results);
 
-  const Unique_expense_Category = sets(expenses, "category");
+  const Unique_expense_Category = sets(results, "category");
 
   const percentage = Unique_expense_Category.map((uniqueCategory) => {
-    const filter_Category = expenses.filter(
+    const filter_Category = results.filter(
       (expense) => expense.category === uniqueCategory
     );
 
@@ -87,8 +86,8 @@ const DashboardBody = () => {
   const Original_Gradient_color = `linear-gradient(90deg,${joined_Real_Gradient_color})`;
   const top4 = sorted_percent.slice(0, 4);
   let f;
-  expenses.length < 10 ? (f = 0) : (f = expenses.length - 10);
-  const data = expenses.slice(f, expenses.length);
+  results.length < 10 ? (f = 0) : (f = results.length - 10);
+  const data = results.slice(f, results.length);
   const icons = useIcons();
   const alimi = [];
   const all4 = top4.map((all) => {
@@ -96,8 +95,6 @@ const DashboardBody = () => {
       if (all.type === icon.title) alimi.push({ ...icon, ...all });
     });
   });
-  // all4();
-  // console.log(all4);
   console.log(alimi);
   return (
     <section className="dashboard-body">
@@ -136,12 +133,11 @@ const DashboardBody = () => {
           </div>
         </div>
       </article>
-      <Expenses data={data} type="Latest Expenses" seeall />
+      <Expenses data={data} type="Latest results" seeall />
       <div className="dash-top">
         <h3>Top Categories</h3>
         <div className="dash-top4">
           {alimi.map((category, index) => {
-            console.log(category);
             return <Incategories {...category} key={index} />;
           })}
         </div>

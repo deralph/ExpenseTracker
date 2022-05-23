@@ -1,12 +1,15 @@
 .sidebar{
-    width: 20%;
     min-width: 250px;
     background: darkblue;
     min-height: 100vh;
     height: auto;
-    position: relative;
     padding: 20px;
     text-transform: capitalize;
+    position: fixed;
+    width: 20vw;
+    left: 0;
+    top: 0;
+    position: sticky;
 }
 ul{
     list-style-type: none;
@@ -43,7 +46,6 @@ ul{
     color: #aaa;
     padding: 3px;
     font-family: sans-serif;
-    /* font-size: 0.9rem; */
     font-weight: 600;
 }
 .side-ul li{
@@ -57,6 +59,3 @@ ul{
 .sidebar input{
     padding: 5px 0;
 }
-/* .side-filter{
-    margin-right: 10px;
-} */

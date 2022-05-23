@@ -6,12 +6,12 @@ import "./Dashboard.css";
 
 const Dashboard = () => {
   return (
-    <section>
-      <Navbar />
-      <article className="dashboard">
-        <Sidebar />
-        <DashboardBody />
-      </article>
+    <section className="dashboard">
+      {/* <Navbar /> */}
+      {/* <article className="dashboard"> */}
+      <Sidebar />
+      <DashboardBody />
+      {/* </article> */}
     </section>
   );
 };

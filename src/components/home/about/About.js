@@ -1,6 +1,5 @@
 import React from "react";
 import "./about.css";
-import img from "../../../Geulgram/20220501163514.jpg";
 
 const About = () => {
   return (
@@ -18,7 +17,9 @@ const About = () => {
             your actual day to day expenses and payments
           </p>
         </div>
-        <div className="about-img">{/* <img src={img} alt="journal" /> */}</div>
+        <div className="about-img ">
+          <div className="record-img-2"></div>
+        </div>
       </article>
     </section>
   );

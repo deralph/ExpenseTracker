@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useState } from "react";
 import { useGlobal } from "../context/Context";
 import img from "../../Geulgram/naira-removebg-preview.png";
 
@@ -9,29 +9,11 @@ const CategoriesForm = () => {
     day: "numeric",
     month: "short",
   });
-  const [{}, dispatch] = useGlobal();
-  const getLocaiStorage = useCallback(() => {
-    let _expenses = localStorage.getItem("results");
-    if (_expenses) {
-      return (_expenses = JSON.parse(localStorage.getItem("results")));
-    } else {
-      return [];
-    }
-  }, []);
+  const { form, setForm, results, setResults } = useGlobal();
   const focus = (e) => {
     e.target.type = "date";
   };
-  const [form, setForm] = useState({
-    productName: "",
-    price: "",
-    date: "",
-    month: new Date().toLocaleDateString("en-us", { month: "long" }),
-    productNo: "",
-    category: "",
-    description: "",
-  });
 
-  const [results, setResults] = useState(getLocaiStorage());
   const [alert, setAlert] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [msg, setMsg] = useState("");
@@ -71,8 +53,7 @@ const CategoriesForm = () => {
       setShowAlert(true);
       setAlert(false);
       setMsg("submitted sucessfully");
-      const result = { id: new Date().getTime().toString(), ...form };
-      setResults([...results, result]);
+      setResults([...results, form]);
       console.log(results);
       setForm({
         productName: "",
@@ -86,17 +67,9 @@ const CategoriesForm = () => {
       }, 1000);
     }
   };
-  useEffect(() => {
-    getLocaiStorage();
-    dispatch({ type: "SET_EXPENSES", payload: results });
-  }, [results, getLocaiStorage, dispatch]);
-
-  useEffect(() => {
-    localStorage.setItem("results", JSON.stringify(results));
-  }, [form, results]);
 
   return (
-    <section className="categoryForm" style={{ padding: "50px 0" }}>
+    <section className="categoryForm" style={{ padding: "50px 0 100px" }}>
       <div className="semi-bg" />
       <form action="" className="sign">
         <h3>Enter product details</h3>
@@ -171,7 +144,7 @@ const CategoriesForm = () => {
       </form>
       <p
         style={{
-          marginTop: "50px",
+          margin: "50px 0",
           display: "flex",
           alignItems: "center",
           fontSize: "20px",

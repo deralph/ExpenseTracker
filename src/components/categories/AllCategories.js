@@ -6,35 +6,36 @@ import { reduceFunction, sets } from "../../quotesDB";
 import "./categories.css";
 
 const AllCategories = () => {
-  const [{ expenses }] = useGlobal();
+  const { results } = useGlobal();
+  console.log(results);
   const [pro, setPro] = useState("");
 
   const [datas, setDatas] = useState([]);
   useEffect(() => {
     const go = setTimeout(() => {
-      setDatas(expenses);
+      setDatas(results);
     }, 5);
     return () => clearTimeout(go);
-  }, [expenses]);
+  }, [results]);
   useEffect(() => {
-    setDatas(expenses.filter((type) => type.price * type.productNo > pro));
-  }, [pro]);
+    setDatas(results.filter((type) => type.price * type.productNo > pro));
+  }, [pro, results]);
 
-  const PriceAndNo = expenses.map(({ price, productNo }) => price * productNo);
+  const PriceAndNo = results.map(({ price, productNo }) => price * productNo);
 
   const proc = PriceAndNo.reduce((then, now) => {
     return now > then ? now : then;
   }, 0);
   console.log(proc);
 
-  const monthOptions = ["all", ...sets(expenses, "month")];
-  const options = ["all", ...sets(expenses, "category")];
+  const monthOptions = ["all", ...sets(results, "month")];
+  const options = ["all", ...sets(results, "category")];
 
   const handleAll = (opt, type) => {
     if (opt === "all") {
-      setDatas(expenses);
+      setDatas(results);
     } else {
-      setDatas(expenses.filter((sold) => sold[type] === opt));
+      setDatas(results.filter((sold) => sold[type] === opt));
     }
   };
 
