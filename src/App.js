@@ -1,3 +1,4 @@
+import AllCategories from "./components/categories/AllCategories";
 import Categories from "./components/categories/Categories";
 import CategoriesForm from "./components/categories/CategoriesForm";
 import Context from "./components/context/Context";
@@ -12,16 +13,17 @@ function App() {
   return (
     <div className="App">
       {/* <Context> */}
-      {/* <Home /> */}
+      <Home />
       {/* <Navbar /> */}
-      {/* <SignIn /> */}
+      <SignIn />
       {/* <Context/> */}
       {/* <Dashboard /> */}
-      {/* <Welcome /> */}
+      <Welcome />
       <Categories />
       <CategoriesForm />
       <Dashboard />
       {/* <Expenses /> */}
+      <AllCategories />
     </div>
   );
 }

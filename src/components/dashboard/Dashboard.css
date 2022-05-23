@@ -3,4 +3,5 @@
     flex-direction: row;
     margin-top: 60px;
     width: 100%;
+    align-items: baseline;
 }

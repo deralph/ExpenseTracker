@@ -5,6 +5,10 @@ import Dash from "./Dash";
 import "./dashboardBody.css";
 import quotes, { Category_colors } from "../../../quotesDB";
 import Quote from "./Quote";
+import { reduceFunction, sets } from "../../../quotesDB";
+import img from "../../../Geulgram/naira-removebg-preview.png";
+import { useIcons } from "../../context/Context";
+import Incategories from "../../categories/Incategories";
 
 const DashboardBody = () => {
   const [{ expenses }] = useGlobal();
@@ -14,7 +18,7 @@ const DashboardBody = () => {
     const random = Math.floor(Math.random() * (quotes.length - 1));
     console.log(random);
     setPresentQuote(random);
-  }, []);
+  }, [setPresentQuote]);
 
   useEffect(() => {
     const change = setInterval(() => {
@@ -23,30 +27,16 @@ const DashboardBody = () => {
     return () => clearInterval(change);
   }, [randomNum]);
 
-  const total_Expense = expenses.reduce((exp, expense) => {
-    const { productNo, price } = expense;
-    const productNum = parseInt(productNo);
-    const productPrice = parseInt(price);
-    const expenseTotal = productNum * productPrice;
+  const total_Expense = reduceFunction(expenses);
 
-    return exp + expenseTotal;
-  }, 0);
-
-  const Expenses_Category = expenses.map((expense) => expense.category);
-  const Unique_expense_Category = [...new Set(Expenses_Category)];
+  const Unique_expense_Category = sets(expenses, "category");
 
   const percentage = Unique_expense_Category.map((uniqueCategory) => {
     const filter_Category = expenses.filter(
       (expense) => expense.category === uniqueCategory
     );
 
-    const percent = filter_Category.reduce((acc, real) => {
-      const { productNo, price } = real;
-      const productNum = parseInt(productNo);
-      const productPrice = parseInt(price);
-      const realTotal = productNum * productPrice;
-      return acc + realTotal;
-    }, 0);
+    const percent = reduceFunction(filter_Category);
 
     const realPercent = ((percent / total_Expense) * 100).toFixed(2);
     return { type: uniqueCategory, percenta: realPercent, percent };
@@ -95,6 +85,20 @@ const DashboardBody = () => {
   Gradient_color();
   const joined_Real_Gradient_color = `${Real_Gradient_color.join(" ")}`;
   const Original_Gradient_color = `linear-gradient(90deg,${joined_Real_Gradient_color})`;
+  const top4 = sorted_percent.slice(0, 4);
+  let f;
+  expenses.length < 10 ? (f = 0) : (f = expenses.length - 10);
+  const data = expenses.slice(f, expenses.length);
+  const icons = useIcons();
+  const alimi = [];
+  const all4 = top4.map((all) => {
+    return icons.map((icon) => {
+      if (all.type === icon.title) alimi.push({ ...icon, ...all });
+    });
+  });
+  // all4();
+  // console.log(all4);
+  console.log(alimi);
   return (
     <section className="dashboard-body">
       <Quote
@@ -104,7 +108,11 @@ const DashboardBody = () => {
       <article className="total-category">
         <div className="total-card">
           <p>
-            <span>{total_Expense}</span> <br />
+            <span>
+              <img src={img} alt="naira symbol" className="naira" />
+              {total_Expense}
+            </span>{" "}
+            {/* <br /> */}
             spent
           </p>
           <button>See List</button>
@@ -128,8 +136,16 @@ const DashboardBody = () => {
           </div>
         </div>
       </article>
-      <Expenses />
-      <div className="">top Categories</div>
+      <Expenses data={data} type="Latest Expenses" seeall />
+      <div className="dash-top">
+        <h3>Top Categories</h3>
+        <div className="dash-top4">
+          {alimi.map((category, index) => {
+            console.log(category);
+            return <Incategories {...category} key={index} />;
+          })}
+        </div>
+      </div>
     </section>
   );
 };

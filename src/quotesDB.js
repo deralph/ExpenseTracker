@@ -485,4 +485,18 @@ export const Category_colors = {
   accesories: "burlywood",
 };
 
+export const reduceFunction = (group) => {
+  const percent = group.reduce((acc, real) => {
+    const { productNo, price } = real;
+    const productNum = parseInt(productNo);
+    const productPrice = parseInt(price);
+    const realTotal = productNum * productPrice;
+    return acc + realTotal;
+  }, 0);
+  return percent;
+};
+export const sets = (set, type) => [
+  ...new Set(set.map((expense) => expense[type])),
+];
+
 export default quotesDB;

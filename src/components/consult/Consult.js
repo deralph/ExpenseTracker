@@ -9,7 +9,6 @@ const Consult = () => {
   const [email, setEmail] = useState("");
   return (
     <section className="consult">
-      {/* <h3>Consultation</h3> */}
       <div className="consult-text">
         <p>
           Need a Consultation ? <br />

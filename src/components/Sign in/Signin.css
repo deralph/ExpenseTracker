@@ -5,9 +5,9 @@
 .signin{
     display: grid;
     place-items: center;
-    height: 100vh;
+    height: auto;
     position: relative;
-    min-height: 6R50px;
+    min-height: 650px;
 }
 .semi-bg{
     position: absolute;
@@ -33,7 +33,6 @@
     box-shadow: 3px 3px 20px #aaa;
     max-width: 520px;
     width: 100%;
-    /* min-width: 300px; */
     padding: 20px 30px 50px;
     background: #fff;
     text-align: center;
@@ -48,7 +47,7 @@
     color: #111;
 }
 
-.sign input, .sign select{
+.sign input, .sign select, .sign textarea{
     display: block;
     width: 100%;
     border: 2px solid #aaa;
@@ -60,6 +59,9 @@
     padding: 5px 0;
     padding-left: 5px;
     object-fit: contain;
+}
+.sign textarea{
+    height: 120px;
 }
 .sign .alert{
     font-size: 13px;

@@ -3,8 +3,6 @@ import img from "../../../Geulgram/20220501163514.jpg";
 import Card from "./Card";
 import "./testi.css";
 
-// const img = "../../../Geulgram/20220501163514.jpg";
-
 const userData = [
   {
     id: 1,

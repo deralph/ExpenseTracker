@@ -1,10 +1,8 @@
 .cate{
     display: grid;
     place-items: center;
-    /* height: 200px; */
     padding: 20px;
-    max-width: 160px;
-    /* font-size: 100px; */
+    max-width: 200px;
     box-shadow: 3px 3px 20px #ccc;
     border-radius: 20px;
     margin: 10px;
@@ -24,12 +22,15 @@
 .category{
     margin: 70px auto;
     width: 60%;
-    /* height: auto; */
-    /* background: red; */
     display: flex;
     justify-content: space-evenly;
-    /* flex-wrap: nowrap; */
     flex-wrap: wrap;
 }
-
-;
+.all{
+    display: flex;
+    justify-content: center;
+}
+.dashboard .all-side .side-total{
+    text-align: center;
+    font-size: 25px;
+}

@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useGlobal } from "../context/Context";
+import img from "../../Geulgram/naira-removebg-preview.png";
+
 const CategoriesForm = () => {
   const timing = new Date().toLocaleDateString("en-us", {
     year: "numeric",
@@ -23,8 +25,10 @@ const CategoriesForm = () => {
     productName: "",
     price: "",
     date: "",
+    month: new Date().toLocaleDateString("en-us", { month: "long" }),
     productNo: "",
     category: "",
+    description: "",
   });
 
   const [results, setResults] = useState(getLocaiStorage());
@@ -42,6 +46,10 @@ const CategoriesForm = () => {
     if (isNaN(form.price)) {
       setAlert(true);
       setMsg("Enter correct inputs");
+      setShowAlert(true);
+    } else if (form.productNo < 1) {
+      setAlert(true);
+      setMsg("Number of product can't be less than 1");
       setShowAlert(true);
     } else if (
       form.category.trim() === "" ||
@@ -88,7 +96,7 @@ const CategoriesForm = () => {
   }, [form, results]);
 
   return (
-    <section className="categoryForm">
+    <section className="categoryForm" style={{ padding: "50px 0" }}>
       <div className="semi-bg" />
       <form action="" className="sign">
         <h3>Enter product details</h3>
@@ -150,8 +158,31 @@ const CategoriesForm = () => {
           <option value="micellenous">Micellenous</option>
           <option value="others">Others</option>
         </select>
+        <textarea
+          name="description"
+          id="description"
+          cols="30"
+          rows="10"
+          value={form.description}
+          onChange={handleForm}
+          placeholder="Description"
+        ></textarea>
         <button onClick={handleSubmit}>Submit</button>
       </form>
+      <p
+        style={{
+          marginTop: "50px",
+          display: "flex",
+          alignItems: "center",
+          fontSize: "20px",
+          fontFamily: "sans-serif",
+          fontWeight: "bold",
+          color: "red",
+        }}
+      >
+        Kindly note that all prices entered should be in NAIRA
+        <img src={img} alt="naira" className="naira" />
+      </p>
     </section>
   );
 };

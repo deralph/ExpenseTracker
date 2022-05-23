@@ -6,7 +6,7 @@ import "./Dashboard.css";
 
 const Dashboard = () => {
   return (
-    <section className="dashboard">
+    <section>
       <Navbar />
       <article className="dashboard">
         <Sidebar />
