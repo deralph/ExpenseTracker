@@ -9,7 +9,7 @@ const Signup = () => {
   return (
     <form action="" className="sign">
       <h3>sign in</h3>
-      <p>if you already registered</p>
+      <p>if you are registered</p>
       <input
         type="email"
         value={email}

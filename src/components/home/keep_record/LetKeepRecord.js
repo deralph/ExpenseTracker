@@ -1,17 +1,15 @@
 import React from "react";
 import "./record.css";
-import img from "../../../Geulgram/youtuber-ga11fe1cbc_640.jpg";
+import { Link } from "react-router-dom";
+import { useGlobal } from "../../context/Context";
 
 const LetKeepRecord = () => {
+  const { setSignIn } = useGlobal();
+
   return (
     <section className="record">
       <div className="record-img">
         <div className="record-img-2"></div>
-        {/* <img
-          src={img}
-          alt="a man trying to figure out comething"
-          style={{ zIndex: "-1" }}
-        /> */}
       </div>
       <div className="record-cont">
         <p>
@@ -20,8 +18,16 @@ const LetKeepRecord = () => {
         </p>
         <p>Let's keep record of your expenses for you</p>
         <div className="btn-cont">
-          <button>login</button>
-          <button>register</button>
+          <button>
+            <Link to="signin" onClick={() => setSignIn(true)}>
+              Log in
+            </Link>
+          </button>
+          <button>
+            <Link to="signin" onClick={() => setSignIn(false)}>
+              Register
+            </Link>
+          </button>
         </div>
       </div>
     </section>

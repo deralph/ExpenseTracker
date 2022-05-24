@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./navbar.css";
 import { FaRegUserCircle } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { useGlobal } from "../../context/Context";
 
 const Navbar = () => {
+  const { setSignIn } = useGlobal();
   const [show, handleShow] = useState(false);
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -22,8 +25,16 @@ const Navbar = () => {
         <li className="user">
           <FaRegUserCircle />
           <ul className="in-user">
-            <li>Log in</li>
-            <li>Register</li>
+            <li>
+              <Link to="signin" onClick={() => setSignIn(true)}>
+                Log in
+              </Link>
+            </li>
+            <li>
+              <Link to="signin" onClick={() => setSignIn(false)}>
+                Register
+              </Link>
+            </li>
           </ul>
         </li>
       </ul>

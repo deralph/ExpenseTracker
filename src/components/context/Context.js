@@ -102,9 +102,12 @@ const Context = ({ children }) => {
   useEffect(() => {
     localStorage.setItem("results", JSON.stringify(results));
   }, [form, results]);
+  const [signIn, setSignIn] = useState(false);
 
   return (
-    <AppProvider.Provider value={{ form, setForm, results, setResults }}>
+    <AppProvider.Provider
+      value={{ form, setForm, results, setResults, signIn, setSignIn }}
+    >
       {children}
     </AppProvider.Provider>
   );
