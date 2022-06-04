@@ -5,13 +5,15 @@ import Dash from "./Dash";
 import "./dashboardBody.css";
 import quotes, { Category_colors } from "../../../quotesDB";
 import Quote from "./Quote";
-import { reduceFunction, sets } from "../../../quotesDB";
+import { sets } from "../../../quotesDB";
 import img from "../../../Geulgram/naira-removebg-preview.png";
-import { useIcons } from "../../context/Context";
+import { useIcons } from "./../../../quotesDB";
 import Incategories from "../../categories/Incategories";
+import { Link } from "react-router-dom";
+import { RiEqualizerLine } from "react-icons/ri";
 
 const DashboardBody = () => {
-  const { results } = useGlobal();
+  const { results, sidebar, setSidebar, reduceFunction } = useGlobal();
   const [presentQuote, setPresentQuote] = useState(0);
 
   const randomNum = useCallback(() => {
@@ -25,7 +27,6 @@ const DashboardBody = () => {
     }, 8000);
     return () => clearInterval(change);
   }, [randomNum]);
-
   const total_Expense = reduceFunction(results);
 
   const Unique_expense_Category = sets(results, "category");
@@ -38,7 +39,11 @@ const DashboardBody = () => {
     const percent = reduceFunction(filter_Category);
 
     const realPercent = ((percent / total_Expense) * 100).toFixed(2);
-    return { type: uniqueCategory, percenta: realPercent, percent };
+    return {
+      type: uniqueCategory,
+      percenta: realPercent,
+      percent,
+    };
   });
 
   const sorted_percent = percentage.sort((a, b) => {
@@ -95,9 +100,13 @@ const DashboardBody = () => {
       if (all.type === icon.title) alimi.push({ ...icon, ...all });
     });
   });
-  console.log(alimi);
   return (
     <section className="dashboard-body">
+      <RiEqualizerLine
+        className="dash-top1"
+        onClick={() => setSidebar(!sidebar)}
+        style={{ color: sidebar ? "#fff" : "#000" }}
+      />
       <Quote
         quote={quotes[presentQuote].quote}
         author={quotes[presentQuote].author}
@@ -112,7 +121,9 @@ const DashboardBody = () => {
             {/* <br /> */}
             spent
           </p>
-          <button>See List</button>
+          <Link to="allExpense">
+            <button>See List</button>
+          </Link>
         </div>
         <div className="line-place">
           <div
@@ -133,7 +144,7 @@ const DashboardBody = () => {
           </div>
         </div>
       </article>
-      <Expenses data={data} type="Latest results" seeall />
+      <Expenses data={data} type="Latest Expense" seeall />
       <div className="dash-top">
         <h3>Top Categories</h3>
         <div className="dash-top4">

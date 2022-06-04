@@ -11,11 +11,11 @@
     background-size: 100% 100%; 
      background-position: 100% 100%;
      object-fit: contain;
-    position: absolute;
+    /* position: absolute; */
     background: url(../../../Geulgram/youtuber-ga11fe1cbc_640.jpg);
     height: 370px;
     width: 370px;
-    left: 10%;
+    /* left: 10%; */
     border-radius: 50%;
 }
 .record-img-2{
@@ -27,15 +27,15 @@
 }
 .record-cont{
     max-width: 500px;
-    width: 100%;
+    /* width: 100%; */
     font-family: serif;
-    position: absolute;
-    right: 10%;
+    /* position: absolute;
+    right: 10%; */
 }
 .record p{
     font-size: 30px;
     color: #333;
-    width: 100%;
+    /* width: 100%; */
     padding: 20px;
     /* font-weight: 600; */
     font-family: sans-serif;
@@ -57,4 +57,23 @@
 }
 .record .btn-cont button:hover{
     background: #7733ff;
+}
+
+/* media queries */
+
+@media (max-width:770px) {
+    .record-cont {
+        /* padding: 10px; */
+        flex-basis: 40%;
+    }
+    .record p{
+        font-size: 25px;
+    }
+    .record{
+        flex-direction: column-reverse;
+    }
+    .record-img{
+        width: 300px;
+        height: 300px;
+    }
 }

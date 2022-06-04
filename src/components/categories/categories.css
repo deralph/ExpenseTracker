@@ -1,4 +1,4 @@
-.cate{
+.cate a{
     display: grid;
     place-items: center;
     padding: 20px;
@@ -13,6 +13,9 @@
     font-size: 50px;
     padding: 10px;
     border-radius: 50%;
+}
+ a{
+    color: black;
 }
 .cate p{
     font-size: 20px;
@@ -33,4 +36,16 @@
 .dashboard .all-side .side-total{
     text-align: center;
     font-size: 25px;
+}
+
+@media (max-width: 700px) {
+    .category{
+        width: 100% !important;
+    }
+}
+@media (max-width:300px) {
+    .cate {
+        padding: 5px;
+    }
+
 }

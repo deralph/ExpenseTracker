@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useGlobal } from "../context/Context";
 import Sidebar from "../dashboard/Sidebar/Sidebar";
 import Expenses from "../expenses/Expenses";
-import { reduceFunction, sets } from "../../quotesDB";
+import { sets } from "../../quotesDB";
 import "./categories.css";
 
 const AllCategories = () => {
-  const { results } = useGlobal();
+  const { results, reduceFunction } = useGlobal();
   console.log(results);
   const [pro, setPro] = useState("");
 

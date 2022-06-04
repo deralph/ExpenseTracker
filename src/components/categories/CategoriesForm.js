@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useGlobal } from "../context/Context";
 import img from "../../Geulgram/naira-removebg-preview.png";
+import { useNavigate, useParams } from "react-router-dom";
 
 const CategoriesForm = () => {
   const timing = new Date().toLocaleDateString("en-us", {
@@ -9,7 +10,8 @@ const CategoriesForm = () => {
     day: "numeric",
     month: "short",
   });
-  const { form, setForm, results, setResults } = useGlobal();
+  const { form, setForm, results, setResults, addDoc, colRef } = useGlobal();
+  const Navigate = useNavigate();
   const focus = (e) => {
     e.target.type = "date";
   };
@@ -23,7 +25,7 @@ const CategoriesForm = () => {
     const name = e.target.name;
     setForm({ ...form, [name]: value });
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (isNaN(form.price)) {
       setAlert(true);
@@ -65,6 +67,10 @@ const CategoriesForm = () => {
       setTimeout(() => {
         setShowAlert(false);
       }, 1000);
+      Navigate("/dashboard");
+      addDoc(colRef, form)
+        .then(console.log("added"))
+        .catch((err) => console.log(err.message));
     }
   };
 

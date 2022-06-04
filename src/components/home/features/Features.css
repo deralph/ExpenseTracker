@@ -24,3 +24,11 @@
 .feat-note{
     font-size: 1.3rem;
 }
+
+/* media queries */
+
+@media (max-width:770px) {
+    .feature-box{
+        flex-direction: column;
+    }
+}

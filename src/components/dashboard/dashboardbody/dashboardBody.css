@@ -9,7 +9,7 @@
     height: 150px;
 }
 .dashboard-body, .all-side{
-    padding:0 30px 30px;
+    padding:20px;
     font-family: sans-serif;
     width: 100%;
 }
@@ -72,8 +72,8 @@
 }
 .quote{
     max-width: 500px;
-    width: 100%;
-    margin: 30px auto;
+    width: 90%;
+    margin: 15px auto;
     font-size: 20px;
     border:  1px solid #9933ff;
     padding: 10px 15px;
@@ -110,6 +110,9 @@
     position: relative;
     margin: 30px 0 50px;
 }
+.dash-top1{
+    display: none;
+}
 .dash-top h3:after, .expenses h3:after{
     content: '';
     position: absolute;
@@ -120,4 +123,50 @@
     left: 50%;
     transform: translateX(-50%);
     border-radius: 5px;
+}
+
+@media (max-width:1000px) {
+    .quote p{
+        font-size: 15px;
+    }
+    .total-category{
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        margin: 0 auto;
+    }
+    .dash-top4{
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
+@media (max-width:1000px) {
+    .total-card{
+        padding: 5px;
+    }
+}
+@media (max-width:650px) {
+    .dash-top1{
+        display: block;
+        position: fixed;
+        top: 10px;
+        z-index: 110;
+        transition: 1s;
+    }
+    .dashboard-body{
+        padding: 0;
+    }
+    .quote{
+        margin-top: 40px;
+    }
+    @media (max-width: 350px) {
+        .line-chart{
+            width: 200px;
+        }
+        .quote{
+            padding: 5px;
+            font-size: 15px;
+        }
+    }
+    
 }

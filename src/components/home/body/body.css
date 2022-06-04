@@ -55,7 +55,7 @@
         line-height: 4rem;
     }
 }
-@media (max-width:450px){
+@media (max-width:550px){
     
     .Body div{
         width: 250px !important;

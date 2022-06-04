@@ -1,6 +1,6 @@
 import React from "react";
 import Incategories from "./Incategories";
-import { useIcons } from "../context/Context";
+import { useIcons } from "./../../quotesDB";
 
 const Categories = () => {
   const all = useIcons();

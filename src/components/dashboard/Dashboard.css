@@ -4,4 +4,10 @@
     /* margin-top: 60px; */
     width: 100%;
     align-items: baseline;
+    overflow-x: hidden;
+}
+@media (max-width:650px) {
+   .dashboard{
+       display: block;
+    }
 }

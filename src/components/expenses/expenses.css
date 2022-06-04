@@ -5,12 +5,10 @@
     flex-direction: column;
     width: 120px;
 }
-.expense{
+.expense a{
     border: 1px solid #ddd;
-    width: 100%;
     padding: 15px;
     display: flex;
-    align-items: center;
     border-radius: 10px;
     background: #fff;
     box-shadow: 8px  10px rgba(0, 0, 0, 0.1);
@@ -76,4 +74,16 @@
 }
 .exp .naira{
     width: 30px;
+}
+
+@media (max-width:1000px) {
+    .expenses{
+        width: 100%;
+    }
+}
+@media (max-width:300px) {
+    .exp{
+        width: 80px;
+    }
+   
 }

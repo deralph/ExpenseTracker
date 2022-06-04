@@ -5,87 +5,61 @@ import React, {
   useEffect,
   useState,
 } from "react";
-import { GiMoneyStack, GiClothes } from "react-icons/gi";
-import { FaHome } from "react-icons/fa";
+
+// import reducer, { initialState } from "./Reducer";
+import { initializeApp } from "firebase/app";
 import {
-  MdLocalGroceryStore,
-  MdOutlineFoodBank,
-  MdElectricalServices,
-  MdToys,
-  MdOutlineEmojiTransportation,
-} from "react-icons/md";
-import { BiDrink } from "react-icons/bi";
-import reducer, { initialState } from "./Reducer";
+  getAuth,
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signOut,
+} from "firebase/auth";
+
+import {
+  onSnapshot,
+  getDocs,
+  collection,
+  getFirestore,
+  addDoc,
+  query,
+  where,
+  serverTimestamp,
+  orderBy,
+} from "firebase/firestore";
+import { firebaseConfig } from "../../firebase";
+
+// const firebaseConfig = {
+//   apiKey: "AIzaSyBRLQ784OnYn9McWngXzWfxmXJjiWKHffA",
+//   authDomain: "raphaeltrial-1b594.firebaseapp.com",
+//   projectId: "raphaeltrial-1b594",
+//   storageBucket: "raphaeltrial-1b594.appspot.com",
+//   messagingSenderId: "610219183058",
+//   appId: "1:610219183058:web:fd6641a166092ececdd60b",
+//   measurementId: "G-QQRNF885T2",
+// };
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth();
+
+const db = getFirestore();
+
+const colRef = collection(db, "expenses");
 
 const AppProvider = React.createContext();
-export const useIcons = () => {
-  const allIcons = [
-    {
-      title: "cloth",
-      Icon: GiClothes,
-      color: "#993377",
-    },
-    {
-      title: "grocery",
-      Icon: MdLocalGroceryStore,
-      color: "skyblue",
-    },
-    {
-      title: "drinks",
-      Icon: BiDrink,
-      color: "rgba(165, 42, 42, 0.514)",
-    },
-    {
-      title: "foods",
-      Icon: MdOutlineFoodBank,
-      color: "peachpuff",
-    },
-    {
-      title: "electric",
-      Icon: MdElectricalServices,
-      color: "blueviolet",
-    },
-    {
-      title: "home",
-      Icon: FaHome,
-      color: "yellowgreen",
-    },
-    {
-      title: "transport",
-      Icon: MdOutlineEmojiTransportation,
-      color: "grey",
-    },
-    {
-      title: "accesories",
-      Icon: GiClothes,
-      color: "rgb(255, 0, 157)",
-    },
-    {
-      title: "micellenous",
-      Icon: MdToys,
-      color: "yellow",
-    },
-    {
-      title: "others",
-      Icon: GiMoneyStack,
-      color: "rgb(255, 0, 157)",
-    },
-  ];
-  return allIcons;
-};
 
 const Context = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
-  const getLocalStorage = useCallback(() => {
-    let _expenses = localStorage.getItem("results");
-    if (_expenses) {
-      return (_expenses = JSON.parse(localStorage.getItem("results")));
-    } else {
-      return [];
-    }
-  }, []);
+  const [currentuser, setcurrentuser] = useState("");
+
+  useEffect(
+    () =>
+      onAuthStateChanged(auth, (user) => {
+        setcurrentuser(user.email);
+      }),
+    [setcurrentuser]
+  );
   const [form, setForm] = useState({
-    id: new Date().getTime().toString(),
     productName: "",
     price: "",
     date: "",
@@ -93,20 +67,90 @@ const Context = ({ children }) => {
     productNo: "",
     category: "",
     description: "",
+    email: currentuser,
+    createdAt: serverTimestamp(),
   });
-  const [results, setResults] = useState(getLocalStorage());
-  useEffect(() => {
-    getLocalStorage();
-    dispatch({ type: "SET_EXPENSES", payload: results });
-  }, [results, getLocalStorage, dispatch]);
-  useEffect(() => {
-    localStorage.setItem("results", JSON.stringify(results));
-  }, [form, results]);
+  const [results, setResults] = useState([]);
+
   const [signIn, setSignIn] = useState(false);
+  const [sidebar, setSidebar] = useState(false);
+  const [loading, setloading] = useState(true);
+  const q = query(colRef, where("email", "==", currentuser));
+
+  useEffect(
+    () =>
+      onSnapshot(q, (snapshot) => {
+        setResults(
+          snapshot.docs.map((doc) => {
+            return doc.data();
+          })
+        );
+        setloading(false);
+      }),
+    [setResults, setloading]
+  );
+
+  const signup = (email, password) => {
+    return createUserWithEmailAndPassword(auth, email, password)
+      .then((cred) => {
+        setcurrentuser(cred);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
+  const login = (email, password) => {
+    return signInWithEmailAndPassword(auth, email, password)
+      .then((cred) => {
+        console.log(cred);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
+
+  const signout = () => {
+    return signOut(auth)
+      .then(() => {
+        console.log("user is out");
+      })
+      .catch((err) => console.log(err.message));
+  };
+
+  console.log(currentuser);
+  console.log(results);
+
+  const reduceFunction = (group) => {
+    const percent = group.reduce((acc, real) => {
+      const { productNo, price } = real;
+      const productNum = parseInt(productNo);
+      const productPrice = parseInt(price);
+      const realTotal = productNum * productPrice;
+      return acc + realTotal;
+    }, 0);
+    return percent;
+  };
 
   return (
     <AppProvider.Provider
-      value={{ form, setForm, results, setResults, signIn, setSignIn }}
+      value={{
+        form,
+        setForm,
+        results,
+        setResults,
+        signIn,
+        setSignIn,
+        sidebar,
+        setSidebar,
+        signup,
+        currentuser,
+        login,
+        signout,
+        reduceFunction,
+        loading,
+        addDoc,
+        colRef,
+      }}
     >
       {children}
     </AppProvider.Provider>

@@ -1,12 +1,14 @@
 import React from "react";
 import img from "../../Geulgram/naira-removebg-preview.png";
 import "./categories.css";
+import { Link } from "react-router-dom";
 
 const Incategories = ({ title, Icon, color, percent, percenta }) => {
   const Red = Icon;
   return (
     <div className="cate">
-      <>
+      <Link to="/ExpenseForm">
+        {/* <> */}
         <Red className="caticon" style={{ background: `${color}` }} />
         <p>{title}</p>
         {percent && (
@@ -20,7 +22,7 @@ const Incategories = ({ title, Icon, color, percent, percenta }) => {
             </p>
           </>
         )}
-      </>
+      </Link>
     </div>
   );
 };

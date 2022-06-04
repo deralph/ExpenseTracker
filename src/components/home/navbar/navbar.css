@@ -62,3 +62,21 @@ nav ul li{
     color: #999;
     text-decoration: underline;
 }
+@media (max-width:360px) {
+
+    .nav h1{
+        font-size: 18px;
+    }   
+}
+@media (max-width:300px) {
+    /* nav{
+        padding: 10px 0 !important;
+    } */
+    .nav h1 {
+            font-size: 15px;
+    }
+     nav ul li {
+     font-size: 12px;
+     padding: 5px;
+        }
+}

@@ -1,5 +1,6 @@
 import React from "react";
 import "./Welcome.css";
+import { Link } from "react-router-dom";
 
 const Welcome = () => {
   return (
@@ -10,14 +11,18 @@ const Welcome = () => {
           no worries and more reliable
         </p>
         <div className="welcome-btn">
-          <button>
-            get started
-            <ul className="inlist">
+          <Link to="/expenseForm">
+            <button>
+              get started
+              {/* <ul className="inlist">
               <li>future expense</li>
               <li> present expense</li>
-            </ul>
-          </button>
-          <button>view categories</button>
+            </ul> */}
+            </button>
+          </Link>
+          <Link to="/categories">
+            <button> View Categories </button>
+          </Link>
         </div>
       </div>
     </section>

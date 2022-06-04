@@ -18,6 +18,9 @@
     width: 100%;
     background: #9966ff;
 }
+.sign p{
+    padding: 10px 0;
+}
 .signin footer{
     font-size:  17px;
     font-weight: 800;
@@ -56,7 +59,7 @@
     margin: 20px 0;
     font-size:  15px;
     outline: none;
-    padding: 5px 0;
+    padding:  0;
     padding-left: 5px;
     object-fit: contain;
 }

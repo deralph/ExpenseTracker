@@ -1,6 +1,6 @@
 .sidebar{
     min-width: 250px;
-    background: darkblue;
+    background: rgb(122, 59, 247);
     min-height: 100vh;
     height: auto;
     padding: 20px;
@@ -10,6 +10,8 @@
     left: 0;
     top: 0;
     position: sticky;
+    transition: 1s;
+    /* position: fixed; */
 }
 ul{
     list-style-type: none;
@@ -30,6 +32,7 @@ ul{
     left: 30px;
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 .sidebar .out:hover{
     color: #bbb;
@@ -58,4 +61,20 @@ ul{
 
 .sidebar input{
     padding: 5px 0;
+}
+
+@media (max-width:650px) {
+    .sidebar{
+        position: fixed !important;
+        left: -120% !important;
+        transition: 1s;
+        z-index: 100;
+        /* min-height: 100vh; */
+        height: auto;
+    }
+    .show{
+        /* position: absolute !important; */
+        left: 0 !important;
+        transition: 1s;      
+    }
 }
