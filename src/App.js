@@ -26,9 +26,54 @@ function App() {
           <Route index element={<SignIn />} />
           <Route path="password-reset" element={<Reset />} />
         </Route>
-        <Route path="welcome" element={<Welcome />} />
-        <Route path="categories" element={<Categories />} />
-        <Route path="ExpenseForm" element={<CategoriesForm />} />
+        <Route
+          path="welcome"
+          element={
+            loading ? (
+              <Loader />
+            ) : currentuser ? (
+              loading1 ? (
+                <Loader />
+              ) : (
+                <Welcome />
+              )
+            ) : (
+              <Navigate to="/signin" />
+            )
+          }
+        />
+        <Route
+          path="categories"
+          element={
+            loading ? (
+              <Loader />
+            ) : currentuser ? (
+              loading1 ? (
+                <Loader />
+              ) : (
+                <Categories />
+              )
+            ) : (
+              <Navigate to="/signin" />
+            )
+          }
+        />
+        <Route
+          path="ExpenseForm"
+          element={
+            loading ? (
+              <Loader />
+            ) : currentuser ? (
+              loading1 ? (
+                <Loader />
+              ) : (
+                <CategoriesForm />
+              )
+            ) : (
+              <Navigate to="/signin" />
+            )
+          }
+        />
         <Route
           path="expense/:id"
           element={
@@ -72,6 +117,7 @@ function App() {
           <Route path="consultation" element={<Consult />} />
         </Route>
         <Route path="features" element={<Features />} />
+        <Route path="*" element={<h1>fuck you</h1>} />
       </Routes>
     </BrowserRouter>
   );

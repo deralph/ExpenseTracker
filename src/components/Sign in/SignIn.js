@@ -16,7 +16,7 @@ const SignIn = () => {
           not yet a user?{" "}
           <span onClick={() => setSignIn(false)}>register </span>
           <Link
-            to="/password-reset"
+            to="password-reset"
             style={{ display: "block", textAlign: "center" }}
           >
             forgot password?
