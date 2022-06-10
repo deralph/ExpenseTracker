@@ -75,7 +75,22 @@
 .exp .naira{
     width: 30px;
 }
-
+.single-exp{
+    border: 2px solid #96f;
+    padding: 20px;
+    font-family: sans-serif;
+    width: 100%;
+    max-width: 500px;
+}
+.single-exp p{
+    display: flex;
+    font-size: 18px;
+    padding: 10px;
+    flex-wrap: wrap;
+}
+.single-span{
+    width: 120px;
+}
 @media (max-width:1000px) {
     .expenses{
         width: 100%;

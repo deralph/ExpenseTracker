@@ -4,7 +4,7 @@ import { useGlobal } from "../context/Context";
 import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
-  const { result, login } = useGlobal();
+  const { login } = useGlobal();
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
 
@@ -15,24 +15,31 @@ const Signup = () => {
 
   const controlSubmit = async (e) => {
     e.preventDefault();
+    const regex =
+      /^([a-z A-Z 0-9 \._]+)@([a-z A-Z]+).([a-z A-Z]{2,6})(.[a-z]{2,6})?$/;
+
     if (email.trim() === "" || pass.trim() === "") {
       setAlert(true);
       setMsg("please enter all input");
+    } else if (regex.test(email) === false) {
+      setAlert(true);
+      setMsg("Incorrect Email");
     } else if (email && pass) {
       setMsg("");
       setAlert(false);
-      setMsg("submitted sucessfully");
       setTimeout(() => {
         setMsg("");
       }, 1000);
       setEmail("");
-      setEmail("");
+      setPass("");
       try {
         setloading(true);
         await login(email, pass);
+        setMsg("login sucessfull");
         navigate("/dashboard");
       } catch (error) {
         console.log(error.message);
+        setMsg("failed to login");
       }
       setloading(false);
     }

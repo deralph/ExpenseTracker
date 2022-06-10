@@ -1,12 +1,5 @@
-import React, {
-  useContext,
-  useCallback,
-  useReducer,
-  useEffect,
-  useState,
-} from "react";
+import React, { useContext, useEffect, useState } from "react";
 
-// import reducer, { initialState } from "./Reducer";
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
@@ -14,30 +7,19 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signOut,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 
 import {
   onSnapshot,
-  getDocs,
   collection,
   getFirestore,
-  addDoc,
   query,
   where,
   serverTimestamp,
   orderBy,
 } from "firebase/firestore";
 import { firebaseConfig } from "../../firebase";
-
-// const firebaseConfig = {
-//   apiKey: "AIzaSyBRLQ784OnYn9McWngXzWfxmXJjiWKHffA",
-//   authDomain: "raphaeltrial-1b594.firebaseapp.com",
-//   projectId: "raphaeltrial-1b594",
-//   storageBucket: "raphaeltrial-1b594.appspot.com",
-//   messagingSenderId: "610219183058",
-//   appId: "1:610219183058:web:fd6641a166092ececdd60b",
-//   measurementId: "G-QQRNF885T2",
-// };
 
 const app = initializeApp(firebaseConfig);
 
@@ -52,12 +34,19 @@ const AppProvider = React.createContext();
 const Context = ({ children }) => {
   const [currentuser, setcurrentuser] = useState("");
 
+  const [loading, setloading] = useState(true);
   useEffect(
     () =>
       onAuthStateChanged(auth, (user) => {
+        setloading(true);
+        if (user == null) {
+          setloading(false);
+        }
         setcurrentuser(user.email);
+        console.log(currentuser);
+        setloading(false);
       }),
-    [setcurrentuser]
+    [currentuser]
   );
   const [form, setForm] = useState({
     productName: "",
@@ -74,39 +63,29 @@ const Context = ({ children }) => {
 
   const [signIn, setSignIn] = useState(false);
   const [sidebar, setSidebar] = useState(false);
-  const [loading, setloading] = useState(true);
+  const [loading1, setloading1] = useState(true);
   const q = query(colRef, where("email", "==", currentuser));
 
   useEffect(
     () =>
       onSnapshot(q, (snapshot) => {
+        setloading1(true);
         setResults(
           snapshot.docs.map((doc) => {
-            return doc.data();
+            return { ...doc.data(), id: doc.id };
           })
         );
-        setloading(false);
+        console.log(results);
+        setloading1(false);
       }),
-    [setResults, setloading]
+    [results, q]
   );
 
   const signup = (email, password) => {
-    return createUserWithEmailAndPassword(auth, email, password)
-      .then((cred) => {
-        setcurrentuser(cred);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
+    return createUserWithEmailAndPassword(auth, email, password);
   };
   const login = (email, password) => {
-    return signInWithEmailAndPassword(auth, email, password)
-      .then((cred) => {
-        console.log(cred);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
+    return signInWithEmailAndPassword(auth, email, password);
   };
 
   const signout = () => {
@@ -116,9 +95,9 @@ const Context = ({ children }) => {
       })
       .catch((err) => console.log(err.message));
   };
-
-  console.log(currentuser);
-  console.log(results);
+  const resetPassword = (email) => {
+    return sendPasswordResetEmail(auth, email);
+  };
 
   const reduceFunction = (group) => {
     const percent = group.reduce((acc, real) => {
@@ -148,8 +127,8 @@ const Context = ({ children }) => {
         signout,
         reduceFunction,
         loading,
-        addDoc,
-        colRef,
+        resetPassword,
+        loading1,
       }}
     >
       {children}

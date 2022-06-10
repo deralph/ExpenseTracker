@@ -8,7 +8,6 @@ const Incategories = ({ title, Icon, color, percent, percenta }) => {
   return (
     <div className="cate">
       <Link to="/ExpenseForm">
-        {/* <> */}
         <Red className="caticon" style={{ background: `${color}` }} />
         <p>{title}</p>
         {percent && (

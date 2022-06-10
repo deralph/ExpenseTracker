@@ -3,11 +3,10 @@ import Register from "./Register";
 import "./Signin.css";
 import Signup from "./Signup";
 import { useGlobal } from "../context/Context";
+import { Link } from "react-router-dom";
 
 const SignIn = () => {
   const { signIn, setSignIn } = useGlobal();
-  // const [signin, setSignin] = useState(false);
-
   return (
     <section className="signin">
       <div className="semi-bg" />
@@ -16,6 +15,12 @@ const SignIn = () => {
         <footer>
           not yet a user?{" "}
           <span onClick={() => setSignIn(false)}>register </span>
+          <Link
+            to="/password-reset"
+            style={{ display: "block", textAlign: "center" }}
+          >
+            forgot password?
+          </Link>
         </footer>
       ) : (
         <footer>

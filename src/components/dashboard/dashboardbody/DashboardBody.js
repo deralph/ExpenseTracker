@@ -118,7 +118,6 @@ const DashboardBody = () => {
               <img src={img} alt="naira symbol" className="naira" />
               {total_Expense}
             </span>{" "}
-            {/* <br /> */}
             spent
           </p>
           <Link to="allExpense">

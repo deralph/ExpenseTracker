@@ -7,7 +7,7 @@ import { useGlobal } from "../../context/Context";
 
 const Sidebar = ({ category, month, pro, setPro, handleAll, max }) => {
   const navigate = useNavigate();
-  const { sidebar, setSidebar, signOut } = useGlobal();
+  const { sidebar, setSidebar, signout } = useGlobal();
   return (
     <aside className={sidebar ? "sidebar show" : "sidebar"}>
       {" "}
@@ -36,7 +36,7 @@ const Sidebar = ({ category, month, pro, setPro, handleAll, max }) => {
       <p
         className="out"
         onClick={() => {
-          signOut();
+          signout();
           navigate("/");
         }}
       >

@@ -17,6 +17,9 @@ const Register = () => {
   const Navigate = useNavigate();
   const controlSubmit = async (e) => {
     e.preventDefault();
+    const regex =
+      /^([a-z A-Z 0-9 \._]+)@([a-z A-Z]+).([a-z A-Z]{2,6})(.[a-z]{2,6})?$/;
+
     if (
       form.fullname.trim() === "" ||
       form.email.trim() === "" ||
@@ -25,29 +28,28 @@ const Register = () => {
     ) {
       setAlert(true);
       setMsg("please enter all input");
+    } else if (regex.test(form.email) === false) {
+      setAlert(true);
+      setMsg("Incorrect Email");
     } else if (form.password !== form.confirmPass) {
       setAlert(true);
-      setMsg("confirm your password correctly");
+      setMsg("password do not match");
     } else if (
       form.fullname &&
       form.email &&
       form.password &&
       form.confirmPass
     ) {
-      setAlert(false);
-      setMsg("submitted sucessfully");
-      setTimeout(() => {
-        setMsg("");
-      }, 1000);
       try {
-        setloading(true);
         await signup(form.email, form.password);
+        setloading(true);
+        setMsg("submitted sucessfully");
         navigate("/welcome");
       } catch (error) {
         console.log(error.message);
+        setMsg("failed to register user");
       }
       setForm({ fullname: "", emailAdd: "", password: "", confirmPass: "" });
-      Navigate("/welcome");
     }
   };
 
@@ -73,9 +75,9 @@ const Register = () => {
       />
       <input
         type="email"
-        value={form.emailAdd}
-        name="emailAdd"
-        id="emailAdd"
+        value={form.email}
+        name="email"
+        id="email"
         placeholder="Email Address"
         onChange={handleForm}
         required

@@ -3,18 +3,10 @@ import img from "../../Geulgram/naira-removebg-preview.png";
 import { useIcons } from "../../quotesDB";
 import { Link } from "react-router-dom";
 
-const Expense = ({
-  id,
-  productName,
-  price,
-  category,
-  productNo,
-  date,
-  seeall,
-}) => {
+const Expense = ({ id, productName, price, category, productNo, date }) => {
   return (
     <div className="expense">
-      <Link to={seeall ? `allExpense/expense/${id}` : `expense/${id}`}>
+      <Link to={`/expense/${id}`}>
         <div>
           {useIcons().map((icon) => {
             const Red = icon.Icon;

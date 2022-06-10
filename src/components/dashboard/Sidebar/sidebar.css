@@ -11,7 +11,7 @@
     top: 0;
     position: sticky;
     transition: 1s;
-    /* position: fixed; */
+    overflow-y: scroll;
 }
 ul{
     list-style-type: none;
@@ -71,6 +71,7 @@ ul{
         z-index: 100;
         /* min-height: 100vh; */
         height: auto;
+        overflow-y: scroll;
     }
     .show{
         /* position: absolute !important; */

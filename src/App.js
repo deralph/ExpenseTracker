@@ -11,29 +11,55 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Dashgroup from "./Dashgroup";
 import { useGlobal } from "./components/context/Context";
 import SingleExpense from "./components/expenses/SingleExpense";
+import Reset from "./components/Sign in/Reset";
+import Loader from "./components/Loader";
 function App() {
-  const { results, currentuser, loading } = useGlobal();
+  const { results, currentuser, loading, loading1 } = useGlobal();
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="signin" element={<SignIn />} />
+        <Route
+          path="signin"
+          element={currentuser ? <Navigate to="/dashboard" /> : <Dashgroup />}
+        >
+          <Route index element={<SignIn />} />
+          <Route path="password-reset" element={<Reset />} />
+        </Route>
         <Route path="welcome" element={<Welcome />} />
         <Route path="categories" element={<Categories />} />
         <Route path="ExpenseForm" element={<CategoriesForm />} />
         <Route
+          path="expense/:id"
+          element={
+            loading ? (
+              <Loader />
+            ) : currentuser ? (
+              loading1 ? (
+                <Loader />
+              ) : results.length < 1 ? (
+                <Navigate to="/ExpenseForm" />
+              ) : (
+                <SingleExpense />
+              )
+            ) : (
+              <Navigate to="/signin" />
+            )
+          }
+        />
+        <Route
           path="dashboard"
           element={
-            currentuser ? (
-              loading ? (
-                <h1>loading</h1>
+            loading ? (
+              <Loader />
+            ) : currentuser ? (
+              loading1 ? (
+                <Loader />
               ) : results.length < 1 ? (
-                <Navigate to="/expenseForm" />
+                <Navigate to="/welcome" />
               ) : (
                 <Dashgroup />
               )
-            ) : loading ? (
-              <h1>loading</h1>
             ) : (
               <Navigate to="/signin" />
             )
@@ -43,7 +69,6 @@ function App() {
           <Route path="categories" element={<Categories />} />
           <Route path="ExpenseForm" element={<CategoriesForm />} />
           <Route path="allExpense" element={<AllCategories />} />
-          <Route path="allExpense/expense/:id" element={<SingleExpense />} />
           <Route path="consultation" element={<Consult />} />
         </Route>
         <Route path="features" element={<Features />} />

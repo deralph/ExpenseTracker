@@ -19,12 +19,12 @@ const LetKeepRecord = () => {
         <p>Let's keep record of your expenses for you</p>
         <div className="btn-cont">
           <button>
-            <Link to="signin" onClick={() => setSignIn(true)}>
+            <Link to="/signin" onClick={() => setSignIn(true)}>
               Log in
             </Link>
           </button>
           <button>
-            <Link to="signin" onClick={() => setSignIn(false)}>
+            <Link to="/signin" onClick={() => setSignIn(false)}>
               Register
             </Link>
           </button>

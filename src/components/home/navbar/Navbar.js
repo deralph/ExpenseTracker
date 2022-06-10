@@ -26,12 +26,12 @@ const Navbar = () => {
           <FaRegUserCircle />
           <ul className="in-user">
             <li>
-              <Link to="signin" onClick={() => setSignIn(true)}>
+              <Link to="/signin" onClick={() => setSignIn(true)}>
                 Log in
               </Link>
             </li>
             <li>
-              <Link to="signin" onClick={() => setSignIn(false)}>
+              <Link to="/signin" onClick={() => setSignIn(false)}>
                 Register
               </Link>
             </li>

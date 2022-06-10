@@ -7,11 +7,8 @@ import "./Dashboard.css";
 const Dashboard = () => {
   return (
     <section className="dashboard">
-      {/* <Navbar /> */}
-      {/* <article className="dashboard"> */}
       <Sidebar />
       <DashboardBody />
-      {/* </article> */}
     </section>
   );
 };
