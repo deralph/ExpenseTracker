@@ -13,6 +13,7 @@ import { useGlobal } from "./components/context/Context";
 import SingleExpense from "./components/expenses/SingleExpense";
 import Reset from "./components/Sign in/Reset";
 import Loader from "./components/Loader";
+import Error from "./components/Error/Error";
 function App() {
   const { results, currentuser, loading, loading1 } = useGlobal();
   return (
@@ -117,7 +118,7 @@ function App() {
           <Route path="consultation" element={<Consult />} />
         </Route>
         <Route path="features" element={<Features />} />
-        <Route path="*" element={<h1>fuck you</h1>} />
+        <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>
   );

@@ -3,7 +3,8 @@
     flex-direction: row;
     width: 100%;
     align-items: baseline;
-    overflow-x: hidden;
+    overflow: hidden;
+    position: relative;
 }
 @media (max-width:650px) {
    .dashboard{

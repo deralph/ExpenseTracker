@@ -18,9 +18,15 @@ const SingleExpense = () => {
     color,
   } = useIcons().find((arr) => arr.title === category);
   return (
-    <div style={{ display: "grid", placeContent: "center", height: "100vh" }}>
+    <div className="single-main">
       <section className="single-exp">
-        <div style={{ display: "flex", justifyContent: "center" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginBottom: "40px",
+          }}
+        >
           <Red className="caticon" style={{ background: `${color}` }} />
         </div>
 

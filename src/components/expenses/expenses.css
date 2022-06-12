@@ -76,20 +76,32 @@
     width: 30px;
 }
 .single-exp{
-    border: 2px solid #96f;
+    border: 5px solid #96f;
     padding: 20px;
     font-family: sans-serif;
     width: 100%;
     max-width: 500px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    display: grid;
+    place-content: center;
 }
 .single-exp p{
     display: flex;
     font-size: 18px;
     padding: 10px;
     flex-wrap: wrap;
+
 }
 .single-span{
     width: 120px;
+}
+.single-main{
+    background: rgba(153, 102, 255, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
 }
 @media (max-width:1000px) {
     .expenses{

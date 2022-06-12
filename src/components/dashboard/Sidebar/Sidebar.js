@@ -8,6 +8,8 @@ import { useGlobal } from "../../context/Context";
 const Sidebar = ({ category, month, pro, setPro, handleAll, max }) => {
   const navigate = useNavigate();
   const { sidebar, setSidebar, signout } = useGlobal();
+  const subject =
+    "Hi \n I am ________ \n I am writting to you in subject to the website expensetracked.netlify.app \n I would love to seek financial advice towards ______, \n Thanks";
   return (
     <aside className={sidebar ? "sidebar show" : "sidebar"}>
       {" "}
@@ -28,9 +30,9 @@ const Sidebar = ({ category, month, pro, setPro, handleAll, max }) => {
           <Link to="consultation">
             <li>Book Consultation</li>
           </Link>
-          <Link to="#">
+          <a href={`mailto:deralph73@gmail.com?subject=${subject}`}>
             <li>Seek Financial Advice</li>
-          </Link>
+          </a>
         </ul>
       )}
       <p

@@ -12,6 +12,7 @@
     padding:20px;
     font-family: sans-serif;
     width: 100%;
+    display: block;
     /* margin-left: 20vw; */
 }
 .total-card span{
