@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import { useIcons } from "../../quotesDB";
 import { useGlobal } from "../context/Context";
@@ -11,12 +11,7 @@ const SingleExpense = () => {
   const { category, date, description, month, price, productName, productNo } =
     real;
 
-  useEffect(() => console.log(real), [real]);
-  const {
-    Icon: Red,
-    title,
-    color,
-  } = useIcons().find((arr) => arr.title === category);
+  const { Icon: Red, color } = useIcons().find((arr) => arr.title === category);
   return (
     <div className="single-main">
       <section className="single-exp">

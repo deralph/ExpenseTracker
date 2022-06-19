@@ -57,7 +57,6 @@ const CategoriesForm = () => {
       setAlert(false);
       setMsg("submitted sucessfully");
       setResults([...results, form]);
-      console.log(results);
       setForm({
         productName: "",
         price: "",
@@ -71,7 +70,12 @@ const CategoriesForm = () => {
       Navigate("/dashboard");
       addDoc(colRef, form)
         .then(console.log("added"))
-        .catch((err) => console.log(err.message));
+        .catch((err) => {
+          console.log(err.message);
+          setShowAlert(true);
+          setAlert(true);
+          setMsg("unable to submit form");
+        });
     }
   };
 
