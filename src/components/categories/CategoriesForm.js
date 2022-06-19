@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useGlobal } from "../context/Context";
 import img from "../../Geulgram/naira-removebg-preview.png";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import Back from "../Back";
 
 const CategoriesForm = () => {
   const timing = new Date().toLocaleDateString("en-us", {
@@ -76,6 +77,7 @@ const CategoriesForm = () => {
 
   return (
     <section className="categoryForm" style={{ padding: "50px 0 100px" }}>
+      <Back />
       <div className="semi-bg" />
       <form action="" className="sign">
         <h3>Enter product details</h3>

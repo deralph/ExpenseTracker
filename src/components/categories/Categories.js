@@ -1,15 +1,20 @@
 import React from "react";
 import Incategories from "./Incategories";
 import { useIcons } from "./../../quotesDB";
+import Back from "../Back";
 
 const Categories = () => {
   const all = useIcons();
   return (
-    <section className="category">
-      {all.map((category) => {
-        return <Incategories {...category} key={category.title} />;
-      })}
-    </section>
+    <>
+      <Back />
+      <h3 className="category-h3">Categories</h3>
+      <section className="category">
+        {all.map((category) => {
+          return <Incategories {...category} key={category.title} />;
+        })}
+      </section>
+    </>
   );
 };
 

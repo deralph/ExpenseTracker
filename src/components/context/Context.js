@@ -64,7 +64,11 @@ const Context = ({ children }) => {
   const [signIn, setSignIn] = useState(false);
   const [sidebar, setSidebar] = useState(false);
   const [loading1, setloading1] = useState(true);
-  const q = query(colRef, where("email", "==", currentuser));
+  const q = query(
+    colRef,
+    where("email", "==", currentuser),
+    orderBy("createdAt")
+  );
 
   useEffect(
     () =>
@@ -75,7 +79,6 @@ const Context = ({ children }) => {
             return { ...doc.data(), id: doc.id };
           })
         );
-        console.log(results);
         setloading1(false);
       }),
     [results, q]

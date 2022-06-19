@@ -1,7 +1,6 @@
 import React from "react";
 
 const Feature = ({ Icon, title, desc }) => {
-  // console.log(Icon);
   return (
     <div>
       <Icon className="feat-icon" />

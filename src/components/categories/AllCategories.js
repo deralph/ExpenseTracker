@@ -4,29 +4,23 @@ import Sidebar from "../dashboard/Sidebar/Sidebar";
 import Expenses from "../expenses/Expenses";
 import { sets } from "../../quotesDB";
 import "./categories.css";
+import Back from "../Back";
 
 const AllCategories = () => {
   const { results, reduceFunction } = useGlobal();
-  console.log(results);
   const [pro, setPro] = useState("");
 
-  const [datas, setDatas] = useState([]);
-  useEffect(() => {
-    const go = setTimeout(() => {
-      setDatas(results);
-    }, 5);
-    return () => clearTimeout(go);
-  }, [results]);
-  useEffect(() => {
-    setDatas(results.filter((type) => type.price * type.productNo > pro));
-  }, [pro, results]);
+  const [datas, setDatas] = useState(results);
+  useEffect(
+    () => setDatas(results.filter((type) => type.price * type.productNo > pro)),
+    [pro, results]
+  );
 
-  const PriceAndNo = results.map(({ price, productNo }) => price * productNo);
-
-  const proc = PriceAndNo.reduce((then, now) => {
-    return now > then ? now : then;
-  }, 0);
-  console.log(proc);
+  const max = results
+    .map(({ price, productNo }) => price * productNo)
+    .reduce((then, now) => {
+      return now > then ? now : then;
+    }, 0);
 
   const monthOptions = ["all", ...sets(results, "month")];
   const options = ["all", ...sets(results, "category")];
@@ -41,6 +35,7 @@ const AllCategories = () => {
 
   return (
     <>
+      <Back />
       <div className="dashboard">
         {" "}
         <Sidebar
@@ -49,7 +44,7 @@ const AllCategories = () => {
           pro={pro}
           setPro={setPro}
           handleAll={handleAll}
-          max={proc}
+          max={max}
         />
         <div className="all-side">
           <p

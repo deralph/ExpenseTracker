@@ -1,81 +1,86 @@
-.sidebar{
-    min-width: 250px;
-    background: rgb(122, 59, 247);
-    min-height: 100vh;
-    height: auto;
-    padding: 20px;
-    text-transform: capitalize;
-    position: fixed;
-    width: 20vw;
-    left: 0;
-    top: 0;
-    position: sticky;
-    transition: 1s;
-    overflow-y: scroll;
+.sidebar {
+  min-width: 250px;
+  background: rgb(122, 59, 247);
+  min-height: 100vh;
+  height: auto;
+  padding: 20px;
+  position: fixed;
+  width: 20vw;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  display: block;
+  transition: 1s;
+  overflow: auto;
 }
-ul{
-    list-style-type: none;
+.side-logo {
+  padding-bottom: 100px;
+}
+ul {
+  list-style-type: none;
 }
 .sidebar .side-basic {
-    margin-top: 50px;
+  margin-top: 50px;
 }
-.sidebar .side-basic li,.out,.sidebar h3{
-    padding: 20px 15px;
-    font-size: 18px ;
-    font-weight: 550;
-    color: #ddd;
-    font-family: sans-serif;
+.sidebar .side-basic li,
+.out,
+.sidebar h3 {
+  padding: 20px 15px;
+  font-size: 18px;
+  font-weight: 550;
+  color: #ddd;
+  font-family: sans-serif;
 }
-.sidebar .out{
-    position: absolute;
-    bottom: 5px;
-    left: 30px;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
+.sidebar .out {
+  position: sticky;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 }
-.sidebar .out:hover{
-    color: #bbb;
-    text-decoration: underline;
+.sidebar .out:hover {
+  color: #bbb;
+  text-decoration: underline;
 }
-.sidebar h3{
-    text-align: center;
-    padding: 5px!important;
+.sidebar h3 {
+  text-align: center;
+  padding: 5px !important;
 }
-.side-ul{
-    margin: 5px 0;
+.side-ul {
+  margin: 5px 0;
 }
-.side-ul li, .side-ul p, .range-p,.sidebar label{
-    color: #aaa;
-    padding: 3px;
-    font-family: sans-serif;
-    font-weight: 600;
+.side-ul li,
+.side-ul p,
+.range-p,
+.sidebar label {
+  color: #aaa;
+  padding: 3px;
+  font-family: sans-serif;
+  font-weight: 600;
 }
-.side-ul li{
-    cursor: pointer;
+.side-ul li {
+  cursor: pointer;
 }
-.side-ul p,.sidebar label{
-    padding: 10px 15px;
-    color: #ddd;
+.side-ul p,
+.sidebar label {
+  padding: 10px 15px;
+  color: #ddd;
 }
 
-.sidebar input{
-    padding: 5px 0;
+.sidebar input {
+  padding: 5px 0;
 }
 
-@media (max-width:650px) {
-    .sidebar{
-        position: fixed !important;
-        left: -120% !important;
-        transition: 1s;
-        z-index: 100;
-        /* min-height: 100vh; */
-        height: auto;
-        overflow-y: scroll;
-    }
-    .show{
-        /* position: absolute !important; */
-        left: 0 !important;
-        transition: 1s;      
-    }
+@media (max-width: 650px) {
+  .sidebar {
+    position: fixed !important;
+    left: -120% !important;
+    transition: 1s;
+    z-index: 100;
+    height: auto;
+    overflow-y: scroll;
+  }
+  .show {
+    left: 0 !important;
+    transition: 1s;
+  }
 }

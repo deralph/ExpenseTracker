@@ -1,13 +1,10 @@
-.dashboard{
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    align-items: baseline;
-    overflow: hidden;
-    position: relative;
+.dashboard {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
 }
-@media (max-width:650px) {
-   .dashboard{
-       display: block;
-    }
+@media (max-width: 650px) {
+  .dashboard {
+    display: block;
+  }
 }

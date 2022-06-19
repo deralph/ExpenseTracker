@@ -17,13 +17,7 @@ const Welcome = () => {
           </p>
           <div className="welcome-btn">
             <Link to="/expenseForm">
-              <button>
-                get started
-                {/* <ul className="inlist">
-              <li>future expense</li>
-              <li> present expense</li>
-            </ul> */}
-              </button>
+              <button>get started</button>
             </Link>
             <Link to="/categories">
               <button> View Categories </button>

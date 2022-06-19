@@ -14,6 +14,7 @@ import SingleExpense from "./components/expenses/SingleExpense";
 import Reset from "./components/Sign in/Reset";
 import Loader from "./components/Loader";
 import Error from "./components/Error/Error";
+import Foot from "./components/Foot";
 function App() {
   const { results, currentuser, loading, loading1 } = useGlobal();
   return (
@@ -115,11 +116,12 @@ function App() {
           <Route path="categories" element={<Categories />} />
           <Route path="ExpenseForm" element={<CategoriesForm />} />
           <Route path="allExpense" element={<AllCategories />} />
-          <Route path="consultation" element={<Consult />} />
+          <Route path="consultation" element={<Consult route />} />
         </Route>
         <Route path="features" element={<Features />} />
         <Route path="*" element={<Error />} />
       </Routes>
+      <Foot />
     </BrowserRouter>
   );
 }

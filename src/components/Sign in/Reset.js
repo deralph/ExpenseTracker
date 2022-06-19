@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./Signin.css";
 import { useGlobal } from "../context/Context";
-// import { useNavigate } from "react-router-dom";
 
 const Reset = () => {
   const { resetPassword } = useGlobal();
@@ -10,7 +9,6 @@ const Reset = () => {
   const [alert, setAlert] = useState(false);
   const [loading, setloading] = useState(false);
   const [msg, setMsg] = useState("");
-  // const navigate = useNavigate();
 
   const controlSubmit = async (e) => {
     e.preventDefault();

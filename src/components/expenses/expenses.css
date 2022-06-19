@@ -1,116 +1,113 @@
-.exp{
-    display: flex;
-    justify-content: space-between;
-    padding: 5px;
-    flex-direction: column;
-    width: 120px;
+.exp {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  flex-direction: column;
+  width: 120px;
 }
-.expense a{
-    border: 1px solid #ddd;
-    padding: 15px;
-    display: flex;
-    border-radius: 10px;
-    background: #fff;
-    box-shadow: 8px  10px rgba(0, 0, 0, 0.1);
-    flex-basis: 40%;
-    margin-top: 30px;
-    justify-content: space-evenly;
+.expense a {
+  border: 1px solid #ddd;
+  padding: 15px;
+  display: flex;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 8px 10px rgba(0, 0, 0, 0.1);
+  flex-basis: 40%;
+  margin-top: 30px;
+  justify-content: space-evenly;
 }
-.expense-box{
-    margin-bottom: 30px;
-    display: flex;
+.expense-box {
+  margin-bottom: 30px;
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap-reverse;
+  justify-content: space-evenly;
+}
+.exp-icon {
+  font-size: 30px;
+  padding: 5px;
+  border-radius: 50%;
+}
+.exp-name {
+  font-size: 17px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+.exp-price {
+  color: #0033ff;
+  font-weight: 600;
+}
+.exp-date {
+  color: #888;
+}
+.btns {
+  padding: 10px 40px;
+  font-size: 16px;
+  background: #9933ff;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 20px;
+  transition: all 0.7s;
+}
+.btns:hover {
+  color: #555;
+  border: 2px solid #9933ff;
+  background: #fff;
+}
+.expenses-btn {
+  display: flex;
+  justify-content: center;
+}
+.expenses {
+  position: relative;
+  margin: 30px 0;
+  width: 70vw;
+}
+.expenses h3 {
+  text-align: center;
+  font-size: 30px;
+  position: relative;
+  padding: 0 0 10px;
+}
+.exp .naira {
+  width: 30px;
+}
+.single-exp {
+  border: 5px solid #96f;
+  padding: 20px;
+  font-family: sans-serif;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  display: grid;
+  place-content: center;
+  background: #eee;
+}
+.single-exp p {
+  display: flex;
+  font-size: 18px;
+  padding: 10px;
+  flex-wrap: wrap;
+}
+.single-span {
+  width: 120px;
+}
+.single-main {
+  background: rgba(153, 102, 255, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+@media (max-width: 1000px) {
+  .expenses {
     width: 100%;
-    flex-wrap: wrap-reverse;
-    justify-content: space-evenly;
+  }
 }
-.exp-icon{
-    font-size: 30px;
-    padding: 5px;
-    border-radius: 50%;
-}
-.exp-name{
-    font-size: 17px;
-    font-weight: 600;
-    text-transform: capitalize;
-}
-.exp-price{
-    color: #0033ff;
-    font-weight: 600;
-}
-.exp-date{
-    color: #888;
-}
-.btns{
-    padding: 10px 40px;
-    font-size: 16px;
-    background: #9933ff;
-    color: #fff;
-    font-weight: 600;
-    border: none;
-    border-radius: 20px;
-    transition: all 0.7s;
-    
-}
-.btns:hover{
-    color: #555;
-    border: 2px solid #9933ff;
-    background: #fff;
-}
-.expenses-btn{
-    display: flex;
-    justify-content: center;
-
-}
-.expenses{
-    position: relative;
-    margin: 30px 0;
-    width: 70vw;
-}
-.expenses h3{
-    text-align: center; 
-    font-size: 30px;
-    position: relative;
-    padding: 0 0 10px;
-}
-.exp .naira{
-    width: 30px;
-}
-.single-exp{
-    border: 5px solid #96f;
-    padding: 20px;
-    font-family: sans-serif;
-    width: 100%;
-    max-width: 500px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    display: grid;
-    place-content: center;
-}
-.single-exp p{
-    display: flex;
-    font-size: 18px;
-    padding: 10px;
-    flex-wrap: wrap;
-
-}
-.single-span{
-    width: 120px;
-}
-.single-main{
-    background: rgba(153, 102, 255, 0.3);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
-}
-@media (max-width:1000px) {
-    .expenses{
-        width: 100%;
-    }
-}
-@media (max-width:300px) {
-    .exp{
-        width: 80px;
-    }
-   
+@media (max-width: 300px) {
+  .exp {
+    width: 80px;
+  }
 }

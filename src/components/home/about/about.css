@@ -1,80 +1,73 @@
-.about{
-    margin: 0 auto;
-    width: 90%;
+.about {
+  margin: 0 auto;
+  width: 90%;
 }
-.about-1{
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 100%;
+.about-1 {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
 }
-.about-img{
-    /* flex-basis: 45%; */
-    background: url(../../../Geulgram/journalpics.jpg)!important;
-    height: 400px;
-    background-size: 100% 100%;
-    /* position: absolute; */
-    width: 400px;
-    /* right: 10%; */
-    border-radius: 50%;
+.about-img {
+  background: url(../../../Geulgram/journalpics.jpg) !important;
+  height: 400px;
+  background-size: 100% 100%;
+  width: 400px;
+  border-radius: 50%;
 }
-.about-img-2{
-    height: 100%;
-        border-radius: 50%;
-        background: #9966ff;
-        opacity: 0.5;
-        width: 100%;
+.about-img-2 {
+  height: 100%;
+  border-radius: 50%;
+  background: #9966ff;
+  opacity: 0.5;
+  width: 100%;
 }
-/* .about-note{
-    position: relative;
-    /* width: 50vw; *
-} */
-.about h3, .features h3{
-    margin: 50px auto;
-    text-align: center;
-    font-size: 30px;
-    text-transform: capitalize;
-    font-family: sans-serif;
-    position: relative;
-    padding-bottom: 5px;
+.about h3,
+.features h3 {
+  margin: 50px auto;
+  text-align: center;
+  font-size: 30px;
+  text-transform: capitalize;
+  font-family: sans-serif;
+  position: relative;
+  padding-bottom: 5px;
 }
-.about-note{
-    flex-basis: 45%;
+.about-note {
+  flex-basis: 45%;
 }
-.about-note p{
-    font-size: 30px;
-    padding: 20px;
+.about-note p {
+  font-size: 30px;
+  padding: 20px;
 }
-.about-note h4{
-    font-size: 30px;
-    font-family: sans-serif;
-    text-align: center;
-    color: #9966ff;
-    position: relative;
+.about-note h4 {
+  font-size: 30px;
+  font-family: sans-serif;
+  text-align: center;
+  color: #9966ff;
+  position: relative;
 }
 /* media queries */
 
-@media (max-width:770px) {
-    .about-note {
-        /* padding: 10px; */
-        flex-basis: 40%;
-    }
+@media (max-width: 770px) {
+  .about-note {
+    flex-basis: 40%;
+  }
 
-    .about-note p {
-        font-size: 25px;
-        padding: 10px;
-    }
-    .about-1{
-        flex-direction: column;
-    }
-    .about-img{
-        width: 300px;
-        height: 300px;
-    }
+  .about-note p {
+    font-size: 25px;
+    padding: 10px;
+  }
+  .about-1 {
+    flex-direction: column;
+  }
+  .about-img {
+    width: 300px;
+    height: 300px;
+  }
 }
-@media (max-width:300px) {
-    .about-note p {
-            font-size: 20px !important;
-            padding: 5px !important;
-        }
+@media (max-width: 300px) {
+  .about-note p {
+    font-size: 20px !important;
+    padding: 5px !important;
+  }
 }

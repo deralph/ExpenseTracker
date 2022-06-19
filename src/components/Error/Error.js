@@ -10,7 +10,7 @@ const Error = () => {
         <h3>404 - Page Not Found</h3>
         <p>
           The page you are looking for might have been removed, had its name
-          changed or is temporarily not availble
+          changed or is temporarily not available
         </p>
         <Link to="/">Go to homePage</Link>
       </div>
