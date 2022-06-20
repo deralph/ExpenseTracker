@@ -66,8 +66,8 @@ const Context = ({ children }) => {
   const [loading1, setloading1] = useState(true);
   const q = query(
     colRef,
-    where("email", "==", currentuser),
-    orderBy("createdAt")
+    where("email", "==", currentuser)
+    // orderBy("createdAt")
   );
 
   useEffect(
