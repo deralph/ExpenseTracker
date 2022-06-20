@@ -5,7 +5,6 @@ const Card = ({ id, img, testimony, name }) => {
   return (
     <div className="card">
       <img src={img} alt="tetimonials " />
-      {/* <FaQuoteLeft className="icon-left" /> */}
       <p>
         <FaQuoteLeft className="icon-left" />
         {testimony}
