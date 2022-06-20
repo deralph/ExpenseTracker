@@ -1,132 +1,132 @@
-*{
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
 }
-.signin{
-    display: grid;
-    place-items: center;
-    height: auto;
-    position: relative;
-    min-height: 650px;
+.signin {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  position: relative;
+  min-height: 650px;
 }
-.semi-bg{
-    position: absolute;
-    top: 0;
-    height: 60vh;
-    border-bottom-left-radius: 50px;
-    border-bottom-right-radius: 50px;
-    width: 100%;
-    background: #9966ff;
+.semi-bg {
+  position: absolute;
+  top: 0;
+  height: 60vh;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+  width: 100%;
+  background: #9966ff;
 }
-.sign p{
-    padding: 10px 0;
+.sign p {
+  padding: 10px 0;
 }
-.signin footer{
-    font-size:  17px;
-    font-weight: 800;
+.signin footer {
+  font-size: 17px;
+  font-weight: 800;
 }
-.signin footer span, .signin footer a {
-    color: orange;
-    font-weight: 500;
-    text-decoration: underline;
-    cursor: pointer;
+.signin footer span,
+.signin footer a {
+  color: orange;
+  font-weight: 500;
+  text-decoration: underline;
+  cursor: pointer;
 }
-.sign{
-    border-radius: 30px;
-    box-shadow: 3px 3px 20px #aaa;
-    max-width: 520px;
-    width: 100%;
-    padding: 20px 30px 50px;
-    background: #fff;
-    text-align: center;
-    position: relative;
-}
-
-.sign h3{
-    font-weight: 700;
-    font-size: 30px;
-    padding: 20px;
-    text-transform: capitalize;
-    color: #111;
+.sign {
+  border-radius: 30px;
+  box-shadow: 3px 3px 20px #aaa;
+  max-width: 520px;
+  width: 100%;
+  padding: 20px 30px 50px;
+  background: #fff;
+  text-align: center;
+  position: relative;
 }
 
-.sign input, .sign select, .sign textarea{
-    display: block;
-    width: 100%;
-    border: 2px solid #aaa;
-    height: 40px;
-    border-radius: 30px;
-    margin: 20px 0;
-    font-size:  15px;
-    outline: none;
-    padding:  0;
-    padding-left: 5px;
-    object-fit: contain;
+.sign h3 {
+  font-weight: 700;
+  font-size: 30px;
+  padding: 20px;
+  text-transform: capitalize;
+  color: #111;
 }
-.sign textarea{
-    height: 120px;
-}
-.sign .alert{
-    font-size: 13px;
-    padding: 5px;
-    text-align: center;
-    font-family: sans-serif;
-    font-weight: 600;
-}
-.sign .sucess{
-    
-    color: green;
-    border: 2px solid green;
-}
-.sign .fail{
-    color: red;
-    border: 2px solid red;
 
+.sign input,
+.sign select,
+.sign textarea {
+  display: block;
+  width: 100%;
+  border: 2px solid #aaa;
+  height: 40px;
+  border-radius: 30px;
+  margin: 20px 0;
+  font-size: 15px;
+  outline: none;
+  padding: 0;
+  padding-left: 5px;
+  object-fit: contain;
 }
-.sign button{
-    background: #9966ff;
-    color: #fff;
-    padding: 15px 40px;
-    font-size: 1.2rem;
-    font-weight: 700;
-    border: none;
-    border-radius: 30px;
-    position: absolute;
-    bottom: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 200px;
-    outline: none;
-    cursor: pointer;
+.sign textarea {
+  height: 120px;
 }
-.categoryForm{
-    display: grid;
-    place-items: center;
-    height: 100vh;
-    min-height: 600px;
-    position: relative;
+.sign .alert {
+  font-size: 13px;
+  padding: 5px;
+  text-align: center;
+  font-family: sans-serif;
+  font-weight: 600;
 }
-.categoryForm select:optional{
-    padding: 10px;
+.sign .sucess {
+  color: green;
+  border: 2px solid green;
 }
-.categoryForm select option{
-    margin: 20px;
-
+.sign .fail {
+  color: red;
+  border: 2px solid red;
+}
+.sign button {
+  background: #9966ff;
+  color: #fff;
+  padding: 15px 40px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 30px;
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  outline: none;
+  cursor: pointer;
+}
+.categoryForm {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  min-height: 600px;
+  position: relative;
+}
+.categoryForm select:optional {
+  padding: 10px;
+}
+.categoryForm select option {
+  margin: 20px;
 }
 
 /* media queries */
 
-@media (max-width : 600px) {
-    .sign{
-        padding: 10px 10px 40px;
-        width: 270px !important;
-    }
-    .sign input{
-        height: 27px;
-        font-size: 13px;
-        border-width: 1px;
-    }
-    .sign h3{
-        padding: 15px;
-    }
+@media (max-width: 600px) {
+  .sign {
+    padding: 10px 10px 40px;
+    width: 270px !important;
+  }
+  .sign input {
+    height: 27px;
+    font-size: 13px;
+    border-width: 1px;
+  }
+  .sign h3 {
+    padding: 15px;
+  }
 }
