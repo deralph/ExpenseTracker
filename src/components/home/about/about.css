@@ -9,7 +9,7 @@
   width: 100%;
 }
 .about-img {
-  background: url(../../../Geulgram/journalpics.jpg) !important;
+  background: url(../../../Geulgram/journalpics.jpg) no-repeat center !important;
   height: 400px;
   background-size: 100% 100%;
   width: 400px;
@@ -48,6 +48,26 @@
 }
 /* media queries */
 
+@media (min-width: 1800px) {
+  .about h3,
+  .features h3 {
+    font-size: 60px;
+  }
+  .about-note h4 {
+    font-size: 50px;
+  }
+  .about-note p {
+    font-size: 50px;
+    margin: 70px 0;
+  }
+  .about-img {
+    transform: scale(1.8);
+  }
+  .about,
+  .about-1 {
+    margin: 100px auto;
+  }
+}
 @media (max-width: 770px) {
   .about-note {
     flex-basis: 40%;

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import "./Signin.css";
 import { useGlobal } from "../context/Context";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const Signup = () => {
-  const { login } = useGlobal();
+  const { login, setSignIn } = useGlobal();
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
 
@@ -46,26 +46,37 @@ const Signup = () => {
   };
 
   return (
-    <form action="" className="sign">
-      <h3>sign in</h3>
-      <p>if you are registered</p>
-      {msg && <p className={`alert ${alert ? "fail" : "sucess"}`}>{msg}</p>}
-      <input
-        type="email"
-        value={email}
-        placeholder="Enter your email"
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
-        type="password"
-        value={pass}
-        placeholder="Password"
-        onChange={(e) => setPass(e.target.value)}
-      />
-      <button onClick={controlSubmit} disabled={loading}>
-        sign in
-      </button>
-    </form>
+    <article className="sign-article">
+      <form action="" className="sign">
+        <h3>sign in</h3>
+        <p>if you are registered</p>
+        {msg && <p className={`alert ${alert ? "fail" : "sucess"}`}>{msg}</p>}
+        <input
+          type="email"
+          value={email}
+          placeholder="Enter your email"
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="password"
+          value={pass}
+          placeholder="Password"
+          onChange={(e) => setPass(e.target.value)}
+        />
+        <button onClick={controlSubmit} disabled={loading}>
+          sign in
+        </button>
+      </form>
+      <footer>
+        not yet a user? <span onClick={() => setSignIn(false)}>register </span>
+        <Link
+          to="password-reset"
+          style={{ display: "block", textAlign: "center" }}
+        >
+          forgot password?
+        </Link>
+      </footer>
+    </article>
   );
 };
 

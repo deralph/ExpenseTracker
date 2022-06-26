@@ -114,7 +114,7 @@ function App() {
         >
           <Route index element={<Dashboard />} />
           <Route path="categories" element={<Categories />} />
-          <Route path="ExpenseForm" element={<CategoriesForm />} />
+          <Route path="ExpenseForm" element={<CategoriesForm back />} />
           <Route path="allExpense" element={<AllCategories />} />
           <Route path="consultation" element={<Consult route />} />
         </Route>

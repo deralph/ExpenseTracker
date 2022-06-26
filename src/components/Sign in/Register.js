@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useGlobal } from "../context/Context";
 
 const Register = () => {
-  const { signup } = useGlobal();
+  const { signup, setSignIn } = useGlobal();
   const navigate = useNavigate();
   const [form, setForm] = useState({
     fullname: "",
@@ -14,7 +14,6 @@ const Register = () => {
   const [alert, setAlert] = useState(false);
   const [loading, setloading] = useState(false);
   const [msg, setMsg] = useState("");
-  const Navigate = useNavigate();
   const controlSubmit = async (e) => {
     e.preventDefault();
     const regex =
@@ -60,50 +59,55 @@ const Register = () => {
     setForm({ ...form, [name]: value });
   };
   return (
-    <form action="" className="sign">
-      <h3>register</h3>
-      <p>if you don't have an account</p>
-      {msg && <p className={`alert ${alert ? "fail" : "sucess"}`}>{msg}</p>}
-      <input
-        type="email"
-        name="fullname"
-        id="fullname"
-        value={form.fullname}
-        placeholder="Full Name"
-        onChange={handleForm}
-        required
-      />
-      <input
-        type="email"
-        value={form.email}
-        name="email"
-        id="email"
-        placeholder="Email Address"
-        onChange={handleForm}
-        required
-      />
-      <input
-        type="password"
-        value={form.password}
-        id="password"
-        name="password"
-        placeholder="Password"
-        onChange={handleForm}
-        required
-      />
-      <input
-        type="password"
-        value={form.confirmPass}
-        id="comfirmPass"
-        name="confirmPass"
-        placeholder="Confirm Password"
-        onChange={handleForm}
-        required
-      />
-      <button onClick={controlSubmit} disabled={loading}>
-        Register
-      </button>
-    </form>
+    <article className="sign-article">
+      <form action="" className="sign">
+        <h3>register</h3>
+        <p>if you don't have an account</p>
+        {msg && <p className={`alert ${alert ? "fail" : "sucess"}`}>{msg}</p>}
+        <input
+          type="email"
+          name="fullname"
+          id="fullname"
+          value={form.fullname}
+          placeholder="Full Name"
+          onChange={handleForm}
+          required
+        />
+        <input
+          type="email"
+          value={form.email}
+          name="email"
+          id="email"
+          placeholder="Email Address"
+          onChange={handleForm}
+          required
+        />
+        <input
+          type="password"
+          value={form.password}
+          id="password"
+          name="password"
+          placeholder="Password"
+          onChange={handleForm}
+          required
+        />
+        <input
+          type="password"
+          value={form.confirmPass}
+          id="comfirmPass"
+          name="confirmPass"
+          placeholder="Confirm Password"
+          onChange={handleForm}
+          required
+        />
+        <button onClick={controlSubmit} disabled={loading}>
+          Register
+        </button>
+      </form>
+      <footer>
+        already a user? <span onClick={() => setSignIn(true)}>sign in </span>
+      </footer>
+    </article>
   );
 };
 

@@ -18,7 +18,7 @@ const About = () => {
           </p>
         </div>
         <div className="about-img ">
-          <div className="record-img-2"></div>
+          <div className="about-img-2"></div>
         </div>
       </article>
     </section>

@@ -6,20 +6,7 @@ const Back = () => {
   const navigate = useNavigate();
   return (
     <div>
-      <BiArrowBack
-        onClick={() => navigate(-1)}
-        style={{
-          position: "absolute",
-          top: "15px",
-          right: "15px",
-          padding: "15px",
-          color: "#eee",
-          background: "#333",
-          opacity: "0.7",
-          borderRadius: "50%",
-          zIndex: "100",
-        }}
-      />
+      <BiArrowBack onClick={() => navigate(-1)} className="back" />
     </div>
   );
 };

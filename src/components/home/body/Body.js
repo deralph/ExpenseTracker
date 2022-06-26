@@ -1,6 +1,6 @@
 import React from "react";
 import "./body.css";
-
+import { Link } from "react-router-dom";
 const Body = () => {
   return (
     <header className="Body">
@@ -14,7 +14,9 @@ const Body = () => {
             An online service with which helps you to keep track and record of
             how your money is being spent
           </p>
-          <button>get started</button>
+          <button>
+            <Link to="/signin">get started</Link>
+          </button>
         </div>
       </article>
     </header>

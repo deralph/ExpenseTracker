@@ -70,6 +70,27 @@ ul {
   padding: 5px 0;
 }
 
+@media (min-width: 1800px) {
+  .sidebar {
+    width: 25vw;
+  }
+  .side-ul li,
+  .side-ul p,
+  .range-p,
+  .sidebar label,
+  .sidebar .side-basic li,
+  .out {
+    font-size: 40px;
+    padding: 20px;
+  }
+  .sidebar .side-basic li {
+    margin-top: 50px;
+  }
+  .sidebar h3 {
+    font-size: 50px;
+    margin-top: 50px;
+  }
+}
 @media (max-width: 650px) {
   .sidebar {
     position: fixed !important;

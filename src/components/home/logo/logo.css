@@ -12,3 +12,12 @@
   display: block;
   font-family: cursive;
 }
+
+@media (min-width: 1800px) {
+  .logo .bag {
+    font-size: 80px;
+  }
+  .logo span {
+    font-size: 30px;
+  }
+}

@@ -8,23 +8,21 @@ const Welcome = () => {
   const { signout } = useGlobal();
   const navigate = useNavigate();
   return (
-    <>
-      <section className="welcome">
-        <div className="welcome-cont">
-          <p>
-            <span>Welcome</span> Start your journey to tracking your expense
-            with no worries and more reliable
-          </p>
-          <div className="welcome-btn">
-            <Link to="/expenseForm">
-              <button>get started</button>
-            </Link>
-            <Link to="/categories">
-              <button> View Categories </button>
-            </Link>
-          </div>
-        </div>{" "}
-      </section>
+    <section className="welcome">
+      <div className="welcome-cont">
+        <p>
+          <span>Welcome</span> Start your journey to tracking your expense with
+          no worries and more reliable
+        </p>
+        <div className="welcome-btn">
+          <Link to="/expenseForm">
+            <button>get started</button>
+          </Link>
+          <Link to="/categories">
+            <button> View Categories </button>
+          </Link>
+        </div>
+      </div>{" "}
       <p
         className="out"
         onClick={() => {
@@ -35,7 +33,7 @@ const Welcome = () => {
         Log Out
         <MdLogout style={{ marginLeft: "10px" }} />
       </p>
-    </>
+    </section>
   );
 };
 

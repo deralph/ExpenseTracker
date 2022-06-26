@@ -40,20 +40,22 @@ const Reset = () => {
   return (
     <section className="signin">
       <div className="semi-bg" />
-      <form action="" className="sign">
-        <h3>Reset password</h3>
-        {msg && <p className={`alert ${alert ? "fail" : "sucess"}`}>{msg}</p>}
-        <input
-          type="email"
-          value={email}
-          placeholder="Enter your email"
-          onChange={(e) => setEmail(e.target.value)}
-        />
+      <article className="sign-article">
+        <form action="" className="sign">
+          <h3>Reset password</h3>
+          {msg && <p className={`alert ${alert ? "fail" : "sucess"}`}>{msg}</p>}
+          <input
+            type="email"
+            value={email}
+            placeholder="Enter your email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
 
-        <button onClick={controlSubmit} disabled={loading}>
-          Reset
-        </button>
-      </form>
+          <button onClick={controlSubmit} disabled={loading}>
+            Reset
+          </button>
+        </form>
+      </article>
     </section>
   );
 };

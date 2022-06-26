@@ -15,7 +15,6 @@
 }
 .Body div h2 {
   font-size: 6rem;
-  line-height: 6.5rem;
   text-transform: capitalize;
 }
 .Body div h2 span {
@@ -39,6 +38,35 @@
 .Body div button:hover {
   background: #9966ff;
   color: #fff;
+}
+
+@media (min-width: 1800px) {
+  .Body div button {
+    font-size: 60px;
+    padding: 20px 80px;
+    width: auto;
+    width: 30vh;
+    margin: 50px auto;
+  }
+  .Body article {
+    min-height: auto;
+    height: 80vh;
+    display: grid;
+    place-content: center;
+  }
+  .Body div {
+    max-width: 100vw !important;
+    height: 60vh;
+    width: 60vh;
+  }
+  .body div h2 {
+    font-size: 20rem;
+    line-height: auto !important;
+  }
+  .Body div p {
+    font-size: 50px;
+    margin: 50px 0;
+  }
 }
 
 @media (max-width: 800px) {

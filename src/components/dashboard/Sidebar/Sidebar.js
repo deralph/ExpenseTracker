@@ -54,7 +54,7 @@ const Sidebar = ({ category, month, pro, setPro, handleAll, max }) => {
             filter by:
           </h3>
           <ul className="side-ul">
-            <p>by category</p>
+            <p>By category</p>
             {category.map((option, index) => {
               return (
                 <li onClick={() => handleAll(option, "category")} key={index}>
@@ -64,7 +64,7 @@ const Sidebar = ({ category, month, pro, setPro, handleAll, max }) => {
             })}
           </ul>
           <ul className="side-ul">
-            <p>by month</p>
+            <p>By month</p>
             {month.map((option, index) => {
               return (
                 <li onClick={() => handleAll(option, "month")} key={index}>
@@ -73,7 +73,7 @@ const Sidebar = ({ category, month, pro, setPro, handleAll, max }) => {
               );
             })}
           </ul>
-          <label htmlFor="range">by price</label>
+          <label htmlFor="range">By price</label>
           <input
             type="range"
             name="price"

@@ -69,6 +69,34 @@
 
 /* media queries */
 
+@media (min-width: 1800px) {
+  .consult {
+    margin: 200px 0;
+  }
+  .consult h3 {
+    font-size: 60px;
+  }
+  .form input {
+    height: 40px;
+    padding: 15px;
+    margin: 30px 0 20px;
+    width: 500px;
+    font-size: 30px;
+  }
+  .form {
+    height: auto;
+    width: auto;
+  }
+  .form-1 {
+    height: 600px;
+    width: 600px;
+  }
+  .form .btn {
+    padding: 20px 80px;
+    font-size: 40px;
+    margin-top: 50px;
+  }
+}
 @media (max-width: 770px) {
   .consult-1 {
     flex-direction: column;

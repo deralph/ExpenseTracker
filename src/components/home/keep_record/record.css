@@ -53,7 +53,26 @@
 }
 
 /* media queries */
-
+@media (min-width: 1800px) {
+  .record-cont {
+    max-width: 40vw !important;
+  }
+  .record-cont p {
+    font-size: 50px;
+    margin: 30px 0;
+  }
+  .record-img {
+    transform: scale(1.7);
+  }
+  .record {
+    margin: 200px auto;
+  }
+  .record .btn-cont button {
+    font-size: 50px;
+    padding: 20px 50px;
+    width: auto;
+  }
+}
 @media (max-width: 770px) {
   .record-cont {
     flex-basis: 40%;

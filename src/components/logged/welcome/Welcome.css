@@ -27,31 +27,6 @@
 .welcome-cont button:hover {
   color: #ddd;
 }
-.welcome-cont button:hover .inlist {
-  display: block;
-  transition: all 1s;
-}
-.inlist {
-  display: none;
-  position: absolute;
-  list-style-type: none;
-  background: #ddd;
-  border-radius: 5px;
-  padding: 7px;
-  color: #000;
-}
-.inlist li {
-  cursor: pointer;
-  padding: 10px;
-  border-bottom: 1px solid #555;
-}
-.inlist li:last-child {
-  border: none;
-}
-.inlist li:hover {
-  color: #555;
-  text-decoration: underline;
-}
 .welcome-cont {
   max-width: 600px;
   width: 100%;
@@ -66,7 +41,35 @@
   place-items: center;
   object-fit: contain;
 }
+.welcome .out {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  color: black;
+  font-size: 20px;
+}
 
+@media (min-width: 1800px) {
+  .welcome-cont p span {
+    font-size: 5.5rem;
+  }
+  .welcome-cont p {
+    font-size: 5rem;
+  }
+  .welcome-cont {
+    max-width: 50vw;
+  }
+  .welcome-btn {
+    max-width: 45vw;
+  }
+  .welcome-cont button {
+    font-size: 40px;
+    padding: 25px 50px;
+  }
+  .welcome .out {
+    font-size: 40px;
+  }
+}
 @media (max-width: 900px) {
   .welcome-cont p {
     font-size: 30px;

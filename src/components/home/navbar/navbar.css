@@ -28,6 +28,15 @@ nav ul li a {
   transition: 1s;
 }
 
+@media (min-width: 1800px) {
+  nav ul li a {
+    font-size: 40px;
+    padding: 20px;
+  }
+  .nav {
+    padding: 40px 8%;
+  }
+}
 @media (max-width: 360px) {
   .nav h1 {
     font-size: 18px;

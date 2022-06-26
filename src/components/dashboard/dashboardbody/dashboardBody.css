@@ -96,7 +96,7 @@
   margin-left: 95%;
 }
 .naira {
-  width: 50px;
+  width: 40px;
   object-fit: contain;
 }
 .dash-top4 {
@@ -127,6 +127,54 @@
   border-radius: 5px;
 }
 
+@media (min-width: 1800px) {
+  .quote {
+    max-width: 60vh;
+    margin: 40px auto;
+    font-size: 45px;
+    padding: 30px;
+  }
+  .total-card {
+    padding: 40px;
+    width: 20vw;
+    height: auto;
+  }
+  .total-card span {
+    font-size: 40px;
+  }
+  .total-card p {
+    font-size: 50px;
+  }
+  .total-card button {
+    font-size: 35px;
+    padding: 20px 50px;
+    width: auto;
+  }
+  .line-box {
+    width: 40px;
+    height: 40px;
+  }
+  .dash {
+    padding: 25px;
+  }
+  .line-color p {
+    margin-left: 40px;
+    font-size: 40px;
+  }
+  .line-chart {
+    height: 30px;
+    width: 22vw;
+    border-radius: 60px;
+  }
+  .dash-top h3 {
+    font-size: 60px;
+  }
+  .dashboard-body,
+  .all-side {
+    margin-left: 25vw;
+  }
+}
+
 @media (max-width: 850px) {
   .total-category {
     flex-direction: column;
@@ -148,13 +196,6 @@
     display: flex;
     flex-wrap: wrap;
   }
-}
-@media (max-width: 1000px) {
-  .total-card {
-    padding: 5px;
-  }
-}
-@media (max-width: 650px) {
   .dash-top1 {
     display: block;
     position: fixed;
@@ -168,13 +209,19 @@
   .quote {
     margin-top: 40px;
   }
-  @media (max-width: 350px) {
-    .line-chart {
-      width: 200px;
-    }
-    .quote {
-      padding: 5px;
-      font-size: 15px;
-    }
+}
+@media (max-width: 1000px) {
+  .total-card {
+    padding: 5px;
+  }
+}
+
+@media (max-width: 350px) {
+  .line-chart {
+    width: 200px;
+  }
+  .quote {
+    padding: 5px;
+    font-size: 15px;
   }
 }

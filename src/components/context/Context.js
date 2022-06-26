@@ -14,6 +14,7 @@ import {
   onSnapshot,
   collection,
   getFirestore,
+  addDoc,
   query,
   where,
   serverTimestamp,
@@ -41,10 +42,11 @@ const Context = ({ children }) => {
         setloading(true);
         if (user == null) {
           setloading(false);
+        } else {
+          setcurrentuser(user.email);
+          console.log(currentuser);
+          setloading(false);
         }
-        setcurrentuser(user.email);
-        console.log(currentuser);
-        setloading(false);
       }),
     [currentuser]
   );
@@ -66,8 +68,8 @@ const Context = ({ children }) => {
   const [loading1, setloading1] = useState(true);
   const q = query(
     colRef,
-    where("email", "==", currentuser)
-    // orderBy("createdAt")
+    where("email", "==", currentuser),
+    orderBy("createdAt")
   );
 
   useEffect(
@@ -132,6 +134,9 @@ const Context = ({ children }) => {
         loading,
         resetPassword,
         loading1,
+        addDoc,
+        colRef,
+        serverTimestamp,
       }}
     >
       {children}

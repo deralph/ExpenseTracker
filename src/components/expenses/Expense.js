@@ -2,6 +2,7 @@ import React from "react";
 import img from "../../Geulgram/naira-removebg-preview.png";
 import { useIcons } from "../../quotesDB";
 import { Link } from "react-router-dom";
+import "./expenses.css";
 
 const Expense = ({ id, productName, price, category, productNo, date }) => {
   return (

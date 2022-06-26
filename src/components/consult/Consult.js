@@ -56,7 +56,7 @@ const Consult = ({ route }) => {
         <div className="consult-text">
           <p>
             Need a Consultation ? <br />
-            Contact Us and We Will <br /> Help You
+            Get To You
           </p>
         </div>
         <div className="form-1">

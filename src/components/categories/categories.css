@@ -2,7 +2,6 @@
   display: grid;
   place-items: center;
   padding: 20px;
-  max-width: 200px;
   box-shadow: 3px 3px 20px #ccc;
   border-radius: 20px;
   margin: 10px;
@@ -56,10 +55,35 @@ a {
   text-align: center;
   font-size: 25px;
 }
+.all-side .total-p {
+  text-align: center;
+  font-size: 25px;
+  font-family: sans-serif;
+  font-weight: bold;
+}
 
+@media (min-width: 1800px) {
+  .caticon {
+    font-size: 80px;
+    padding: 30px;
+  }
+  .cate p {
+    font-size: 40px;
+    padding: 40px;
+  }
+  .all-side .total-p {
+    font-size: 50px;
+  }
+  .cate {
+    flex-basis: 45%;
+  }
+  .category-h3 {
+    font-size: 60px;
+  }
+}
 @media (max-width: 1000px) {
   .category {
-    width: 100% !important;
+    width: 90vw !important;
   }
 }
 @media (max-width: 300px) {

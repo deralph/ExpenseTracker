@@ -47,15 +47,7 @@ const AllCategories = () => {
           max={max}
         />
         <div className="all-side">
-          <p
-            style={{
-              textAlign: "center",
-              fontSize: "25px",
-              fontFamily: "sans-serif",
-            }}
-          >
-            Total : {reduceFunction(datas)}
-          </p>
+          <p className="total-p">Total : {reduceFunction(datas)}</p>
           <Expenses data={datas} type=" Expenses" />{" "}
         </div>
       </div>
