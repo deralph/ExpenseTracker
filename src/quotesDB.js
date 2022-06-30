@@ -1,4 +1,3 @@
-// import React from "react";
 import { GiMoneyStack, GiClothes } from "react-icons/gi";
 import { FaHome } from "react-icons/fa";
 import {

@@ -2,7 +2,7 @@
   width: 100%;
   overflow: hidden;
   position: relative;
-  min-width: 100vh;
+  min-width: 100vw;
 }
 @media (max-width: 650px) {
   .dashboard {

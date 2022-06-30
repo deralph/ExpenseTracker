@@ -1,16 +1,17 @@
 import React from "react";
 import "./sidebar.css";
 import { RiEqualizerLine } from "react-icons/ri";
-import { MdLogout } from "react-icons/md";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useGlobal } from "../../context/Context";
 import Logo from "../../home/logo/Logo";
+import { useState } from "react";
+import Logout from "../Logout";
 
 const Sidebar = ({ category, month, pro, setPro, handleAll, max }) => {
-  const navigate = useNavigate();
-  const { sidebar, signout } = useGlobal();
+  const { sidebar } = useGlobal();
+  const [msg, setmsg] = useState();
   const subject =
-    "Hi \n I am ________ \n I am writting to you in subject to the website expensetracked.netlify.app \n I would love to seek financial advice towards ______, \n Thanks";
+    "Hi \n I am ________ \n I am writting to you in subject to the website https://expense-tracked.netlify.app \n I would love to seek financial advice towards ______, \n Thanks";
   return (
     <aside className={sidebar ? "sidebar show" : "sidebar"}>
       {" "}
@@ -35,16 +36,7 @@ const Sidebar = ({ category, month, pro, setPro, handleAll, max }) => {
               <li>Seek Financial Advice</li>
             </a>
           </ul>
-          <p
-            className="out"
-            onClick={() => {
-              signout();
-              navigate("/");
-            }}
-          >
-            Log Out
-            <MdLogout style={{ marginLeft: "10px" }} />
-          </p>
+          <Logout />
         </>
       ) : (
         <>
@@ -84,17 +76,7 @@ const Sidebar = ({ category, month, pro, setPro, handleAll, max }) => {
             onChange={(e) => setPro(e.target.value)}
             style={{ width: "100%" }}
           />
-          <p className="range-p">{pro}</p>{" "}
-          <p
-            className="out"
-            onClick={() => {
-              signout();
-              navigate("/");
-            }}
-          >
-            Log Out
-            <MdLogout style={{ marginLeft: "10px" }} />
-          </p>
+          <p className="range-p">{pro}</p> <Logout />
         </>
       )}
     </aside>

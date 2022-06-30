@@ -2,8 +2,7 @@ import React from "react";
 import "./Welcome.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useGlobal } from "../../context/Context";
-import { MdLogout } from "react-icons/md";
-
+import Logout from "../../dashboard/Logout";
 const Welcome = () => {
   const { signout } = useGlobal();
   const navigate = useNavigate();
@@ -11,8 +10,8 @@ const Welcome = () => {
     <section className="welcome">
       <div className="welcome-cont">
         <p>
-          <span>Welcome</span> Start your journey to tracking your expense with
-          no worries and more reliable
+          <span>Welcome</span> Start your journey to tracking your expense in a
+          more reliable way with no worries
         </p>
         <div className="welcome-btn">
           <Link to="/expenseForm">
@@ -23,16 +22,7 @@ const Welcome = () => {
           </Link>
         </div>
       </div>{" "}
-      <p
-        className="out"
-        onClick={() => {
-          signout();
-          navigate("/");
-        }}
-      >
-        Log Out
-        <MdLogout style={{ marginLeft: "10px" }} />
-      </p>
+      <Logout />
     </section>
   );
 };

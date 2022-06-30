@@ -71,6 +71,10 @@
   }
 }
 @media (max-width: 900px) {
+  .welcome .out {
+    top: 10px;
+    left: 10px;
+  }
   .welcome-cont p {
     font-size: 30px;
   }

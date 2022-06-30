@@ -101,11 +101,10 @@ const DashboardBody = () => {
     });
   });
   return (
-    <section className="dashboard-body">
+    <section className={sidebar ? "dashboard-body overflow" : "dashboard-body"}>
       <RiEqualizerLine
         className="dash-top1"
         onClick={() => setSidebar(!sidebar)}
-        style={{ color: sidebar ? "#fff" : "#000" }}
       />
       <Quote
         quote={quotes[presentQuote].quote}

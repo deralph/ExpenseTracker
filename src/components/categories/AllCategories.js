@@ -7,7 +7,7 @@ import "./categories.css";
 import Back from "../Back";
 
 const AllCategories = () => {
-  const { results, reduceFunction } = useGlobal();
+  const { results, sidebar, reduceFunction } = useGlobal();
   const [pro, setPro] = useState("");
 
   const [datas, setDatas] = useState(results);
@@ -46,7 +46,7 @@ const AllCategories = () => {
           handleAll={handleAll}
           max={max}
         />
-        <div className="all-side">
+        <div className={sidebar ? "all-side overflow" : "all-side"}>
           <p className="total-p">Total : {reduceFunction(datas)}</p>
           <Expenses data={datas} type=" Expenses" />{" "}
         </div>
